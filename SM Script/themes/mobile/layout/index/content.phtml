@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title><?php echo $sm['config']['title']; ?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="description" content="<?php echo $sm['config']['description']; ?>"/>
+<meta name="keywords" content="<?php echo $sm['config']['keywords']; ?>"/>
+<meta name="author" content="<?php echo $sm['config']['name']; ?>"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="<?php echo $sm['config']['theme_url_mobile']; ?>/css/normalize.css">
+<link rel="stylesheet" type="text/css" href="<?php echo $sm['config']['theme_url_mobile']; ?>/css/framework.css">
+<link rel="stylesheet" type="text/css" href="<?php echo $sm['config']['theme_url_mobile']; ?>/css/sm.css">
+<link rel="stylesheet" type="text/css" href="<?php echo $sm['config']['theme_url_mobile']; ?>/css/style.css">
+<link rel="stylesheet" type="text/css" href="<?php echo $sm['config']['theme_url']; ?>/css/sweet-alert.css">
+<link rel="stylesheet" href="<?php echo $sm['config']['theme_url']; ?>/css/scroller.css"/>     
+<link href="<?php echo $sm['config']['theme_url']; ?>/css/fbphotobox.css" rel="stylesheet" type="text/css" /> 
+<script src="<?php echo $sm['config']['theme_url_mobile']; ?>/js/webfont.js"></script>
+<script>
+WebFont.load({
+  google: {
+	families: ["Montserrat:400,700","Material-Design-Icons"]
+  }
+});
+var mobile = true;
+
+window.onresize = function() {
+	var w = window,
+		d = document,
+		e = d.documentElement,
+		g = d.getElementsByTagName('body')[0],
+		x = w.innerWidth || e.clientWidth || g.clientWidth,
+		y = w.innerHeight|| e.clientHeight|| g.clientHeight;	
+		
+	if(x <= 800 && mobile == false){
+		window.location='mobile.php?page=index';	
+	}
+	if(x > 801 && mobile == true){
+		window.location='index.php?page=index';	
+	}		
+};
+</script>
+<script type="text/javascript" src="<?php echo $sm['config']['theme_url_mobile']; ?>/js/modernizr.js"></script>
+<link href="<?php echo $sm['config']['theme_url_mobile']; ?>/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+</head>  
+<?php
+
+$site_config = json_encode($sm['config']);
+$site_prices = json_encode($sm['price']);
+$account_basic = json_encode($sm['basic']);
+$account_premium = json_encode($sm['premium']);
+$site_lang = json_encode($sm['lang']);
+$user_info = json_encode($sm['user']);
+$filter_age = 0;
+$app_user = 0;
+$app_user = secureEncode($_GET['dID']);
+echo 
+'<script>
+var url;
+var mobile = true;
+var site_config = '. $site_config  . ';
+var site_prices = '. $site_prices  . ';
+var account_basic = '. $account_basic  . ';
+var account_premium = '. $account_premium  . ';
+var site_lang = '. $site_lang  . ';
+var user_info = '. $user_info  . ';
+function request_source(){
+	return \'' . $sm['config']['ajax_path'] . '\';
+}
+function site_title(){
+	return \'' . $sm['config']['title'] . '\';
+}	
+function theme_source(){
+	return \'' . $sm['config']['theme_url'] . '\';
+}
+function site_url(){
+	return \'' . $sm['config']['site_url'] . '\';
+}	
+function user_id(){
+	return \'' . $sm['user']['id'] . '\';
+}
+var current_user_id = 0;
+var user_name;	
+</script>';
+?>
+<?= siteConfig('css'); ?>
+</head>
+<body>
+   <section class="w-section mobile-wrapper">
+
+    <div class="page-content cover-background" >
+      <div class="body">
+	  <div class="logo-login"><center><h2 style="color:#fff"><?= $sm['config']['name']; ?></h2><p style="color:#fff"><?= $sm['lang'][2]['text']; ?></p></center></div>
+        <div class="bottom-section padding" style="background:none">
+          <div class="w-form">
+            <form id="login" action="#">
+              <div>
+                <label class="label-form" for="email-field"><?= $sm['lang'][10]['text']; ?></label>
+                <input class="w-input input-form"  type="email"  name="login_email" id="login_email" required="required" style="color:#fff">
+                <div class="separator-fields"></div>
+              </div>
+              <div>
+                <label class="label-form" for="email"><?= $sm['lang'][11]['text']; ?></label>
+                <div class="w-clearfix block-input-combined">
+                  <input class="w-input input-form left" type="password"  name="login_pass" id="login_pass" required="required" style="color:#fff"><a class="right-input-link" href="mobile.php?page=recover" style="background:none"><?= $sm['lang'][12]['text']; ?></a>
+                </div>
+				<div class="w-form-fail" id="login-error" ></div>			  				
+                <div class="separator-button-input"></div>
+              </div>
+			 <input type="hidden"  id="login_dID" value="<?= $app_user; ?>" />
+			  <? if(siteConfig('fb_app_id') != '') { ?>
+				<a class="w-button fb-button"  href="<?=$sm['config']['site_url'];?>index.php?social=fb"><i class="ion-social-facebook"></i></a>
+			  <? } if(siteConfig('twitter_key') != ''){ ?>
+				<a class="w-button twitter-button"  href="<?=$sm['config']['site_url'];?>index.php?social=twitter"><i class="ion-social-twitter"></i></a>
+			  <? } if(siteConfig('google_key') != ''){  ?>
+				<a class="w-button google-button"  href="<?=$sm['config']['site_url'];?>index.php?social=google"><i class="ion-social-google"></i></a>
+			  <? } if(siteConfig('instagram_key') != ''){ ?>			  
+				<a class="w-button instagram-button"  href="<?=$sm['config']['site_url'];?>index.php?social=instagram"><i class="ion-social-instagram"></i></a>
+			  <? } ?>
+			  <div class="separator-button-input"></div>
+              <input class="w-button action-button green" type="submit" id="login-now" value="<?= $sm['lang'][13]['text']; ?>" >
+              <div class="separator-button"></div>
+			  <a class="link-upper" href="mobile.php?page=register" style="font-size:14px;color:#fff"><?= $sm['lang'][24]['text']; ?> <strong class="b-link" style="color:#ffa00b;"> <?= $sm['lang'][41]['text']; ?></strong></a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-content loading-mask" id="new-stack">
+      <div class="loading-icon">
+        <div class="navbar-button-icon icon ion-load-d"></div>
+      </div>
+    </div>
+    <div class="shadow-layer"></div>
+  </section>
+
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/jquery-2.1.1.js"></script>
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/jquery.form.min.js"></script>	
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/materialize.js"></script>
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/fbphotobox.js"></script>
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/scroller.js"></script> 
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/sweet-alert.js"></script> 
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/peer.js"></script> 
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/galleria-1.4.2.min.js"></script> 
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/jquery.preload.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places&key=<?= siteConfig('google_maps'); ?>"></script>
+<script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+<script src="//cdn.jsdelivr.net/velocity/1.2.2/velocity.min.js"></script>
+<script type="text/javascript" src="<?php echo $sm['config']['theme_url_mobile']; ?>/js/framework.js"></script>	
+<script type="text/javascript" src="<?php echo $sm['config']['theme_url_mobile']; ?>/js/mobile.js"></script>
+<?= siteConfig('js'); ?>
+</body>

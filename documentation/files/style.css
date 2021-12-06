@@ -1,0 +1,317 @@
+	body {
+		background: rgba(64,95,200,1);
+		background: -moz-linear-gradient(45deg, rgba(64,95,200,1) 0%, rgba(62,174,196,1) 100%);
+		background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(64,95,200,1)), color-stop(100%, rgba(62,174,196,1)));
+		background: -webkit-linear-gradient(45deg, rgba(64,95,200,1) 0%, rgba(62,174,196,1) 100%);
+		background: -o-linear-gradient(45deg, rgba(64,95,200,1) 0%, rgba(62,174,196,1) 100%);
+		background: -ms-linear-gradient(45deg, rgba(64,95,200,1) 0%, rgba(62,174,196,1) 100%);
+		background: linear-gradient(45deg, rgba(64,95,200,1) 0%, rgba(62,174,196,1) 100%);
+		font: 16px/1.65em Lato, "Century Gothic", "Trebuchet MS", Helvetica, sans-serif;
+		color: #262626;
+		font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+	}
+	a { 
+		color: #5bc0de;
+		outline: 0 none;
+		text-decoration: none;
+		transition: all 0.125s ease-in-out 0s;
+		-moz-transition: all 0.125s ease-in-out 0s;
+		-webkit-transition: all 0.125s ease-in-out 0s;
+		-o-transition: all 0.125s ease-in-out 0s;
+		-ms-transition: all 0.125s ease-in-out 0s;
+	}
+	a:hover {
+		color: #39b3d7;
+		text-decoration: none;
+	}
+	.clearfix:before,
+	.clearfix:after {
+		content: " ";
+		display: table;
+	}
+
+	.clearfix:after {
+		clear: both;
+	}
+
+	.clearfix {
+		*zoom: 1;
+	}
+	.container {
+		width: 940px;
+		padding: 40px 20px;
+		margin: 60px auto 40px;
+		clear: both;
+		background-color: #fff;
+	}
+	/* MENU */
+	aside {
+		width: 200px;
+		float: left;
+	}
+	.anchorific {
+		font-size: 1em;
+	}
+	.anchorific li {
+		margin-bottom: 5px;
+	}
+	.anchorific li ul {
+		display: none;
+	}
+	.anchorific ul li a {
+		color: #22161a;
+		padding: 5px 0;
+		line-height: 1.75em;
+	}
+	.anchorific ul li a:hover {
+		color: #5bc0de;
+	}
+	.anchorific li.active > a { 
+		color: #5bc0de;
+		font-weight: 700;
+	}
+	.anchorific li.active > ul {
+		padding-left: 10px;
+		display: block;
+	}
+	a.anchor {
+		display: none;
+	}
+	.content {
+		width: 700px;
+		float: right;
+	}
+	.content img {
+		max-width: 100%;
+		height: auto;
+	}
+	.content img.imgborder {
+		border: 1px solid #ddd;
+	}
+	.subheader {
+		width: 700px;
+		height: 200px;
+		margin-bottom: 60px;
+	}
+	.item-thumbnail-link {
+		background-color: transparent !important;
+		padding: 0 !important;
+	}
+	.item-thumbnail {
+		width: 200px;
+		height: 200px;
+		display: block;
+		float: left;
+	}
+	.item-name {
+		width: 460px;
+		height: 40px;
+		display: block;
+		float: right;
+		font-size: 2.4em;
+		font-weight: 900;	
+		margin-bottom: 0 !important;
+		padding-top:40px;
+	}
+	.item-type {
+		width: 460px;
+		height: 40px;
+		line-height: 40px;
+		display: block;
+		float: right;
+		font-size: 1.2em;
+		font-weight: 400;	
+		margin-bottom: 10px !important;
+	}
+	.item-version {
+		width: 460px;
+		height: 30px;
+		line-height: 30px;
+		display: block;
+		float: right;
+		font-size: 0.9em;
+		display: block;
+		color: #aaa;
+		margin-bottom: 40px !important;
+	}
+	.button {
+		width: 460px;
+		float: right;
+		margin-bottom: 0 !important;
+	}
+	.button a {
+		height: 20px;
+		line-height: 20px;
+		color: inherit;
+		text-decoration: none;
+		display: inline-block;
+		margin-right: 30px;
+		padding: 10px 15px !important;
+		background-color: #5bc0de !important;
+		color: #fff;
+	}
+	.button a:hover {
+		color: #262626;
+		background-color: #eee !important;
+	}
+	.content a {
+		font-weight: 700;
+		background-color: rgba(244,248,250,1.00);
+		padding: 4px 8px;
+	}
+	.content .pcenter a {
+		background-color: transparent;
+		padding: 0;
+	}
+	.content strong {
+		font-weight: 700;
+	}
+	.content h1,
+	.content h2,
+	.content h3 {
+		color: #262626;
+	}
+	.content h1 {
+		font-size: 2.5em;
+		font-weight: 700;
+		line-height: 2em;
+		margin-bottom: 20px;
+	}
+	.content h2 {
+		font-size: 2em;
+		font-weight: 700;
+		line-height: 1.5em;
+		margin-bottom: 20px;
+		margin-top: 50px;
+	}
+	.content h3 {
+		font-size: 1.6em;
+		font-weight: 400;
+		margin-bottom: 20px;
+		margin-top: 50px;
+	}
+	.content h4 {
+		font-size: 1.25em;
+		font-weight: 400;
+		margin-bottom: 20px;
+		margin-top: 50px;
+	}
+	.content p {
+		margin-bottom: 1em;
+	}
+	.content ol {
+		list-style-type: decimal;
+	}
+	.content ul {
+		list-style-type: square;
+	}
+	.content ul.changelog {
+		list-style-type: none;
+		margin-left: 0;
+	}
+	.content ol,
+	.content ul {
+		margin-left: 20px;
+		margin-bottom: 1em;
+	}
+	.content ol li,
+	.content ul li {
+		margin-bottom: 8px;
+	}
+	.content ul ul,
+	.content ol ol,
+	.content ul ol,
+	.content ol ul {
+		margin-left: 20px;
+		margin-bottom: 0;
+	}
+	.content pre {
+		color: #353535;
+		font-size: 0.9em;
+		line-height: 1.5em;
+		margin-bottom: 1em;
+		padding: 20px;
+		background-color: #eee;
+		font-family: "PT Mono", monospace;
+		-moz-tab-size: 4;
+		-o-tab-size: 4;
+		-webkit-tab-size: 4;
+		-ms-tab-size: 4;
+		tab-size: 4;
+		white-space: pre-wrap;
+	}
+	code {
+		font-family: "PT Mono", monospace;
+		background: #fffbda;
+		padding: 4px 8px;
+		white-space: nowrap;
+		font-size: 0.9em;
+	}
+	.hide {
+		visibility: hidden;
+		display: block;
+		height: 0;
+		width: 0;
+		overflow: hidden;
+	}
+	.warning,
+	.info {
+		padding: 20px;
+		border-left: 3px solid #eee;
+	}
+	.warning {
+		background-color: #fdf7f7;
+		border-color: #d9534f;
+	}
+	.info {
+		background-color: #f4f8fa;
+		border-color: #5bc0de;
+	}
+	.pcenter {
+		text-align: center;
+	}
+	.content table {
+		width: 100%;
+		margin-bottom: 2em;
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+	.content table tbody tr:first-child td {
+		border-top: 1px solid #ccc;
+	}
+	.content table tbody td:first-child {
+		border-left: none;
+	}
+	.content table tbody td {
+		padding: 5px;
+		border-bottom: 1px solid #ccc;
+		border-left: 1px solid #ccc;
+		vertical-align: baseline;
+	}
+	.content > *:last-child {
+		margin-bottom: 0;
+	}
+	.gototop {
+		height: 30px;
+		display: none;
+		background-color: #fff;
+		color: #262626;
+		line-height: 30px;
+		text-align: center;
+		font-size: 0.9em;
+		position: fixed;
+		right: 20px;
+		bottom: 20px;
+		z-index: 8000;
+		padding: 4px 8px;
+		border: 1px solid #ccc;
+		font-weight: 700;
+	}
+	.gototop:hover {
+		color: #fff;
+		background-color: #5bc0de;
+		border: 1px solid #5bc0de;
+		cursor: pointer;
+	}

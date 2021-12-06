@@ -1,0 +1,111 @@
+      <div class="content-wrapper">
+        <section class="content-header" id="admin-content-header">
+          <h1>
+            Dashboard
+            <small>Website statics</small>
+          </h1>
+        </section>
+		<script>aurl = 'dashboard';</script>
+
+        <section class="content">
+          <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="fa fa-users"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Total Users</span>
+                  <span class="info-box-number"><?= getTotalUsers(1); ?></span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-green"><i class="fa fa-user"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Online users</span>
+                  <span class="info-box-number"><?= getTotalUsers(3); ?></span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="fa fa-camera"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Total photos</span>
+                  <span class="info-box-number"><?= getTotalPhotos(1); ?></span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="fa fa-code"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Script version</span>
+                  <span class="info-box-number">3.0</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <?
+			$photos_rev = getTotalPhotosReview();
+			if($photos_rev >= 1){
+			?>
+				<div class='col-md-12'>
+				  <div class="box box-warning">
+					<div class="box-header with-border">
+					  <h3 class="box-title">Photos for review</h3>
+					  <div class="box-tools pull-right">
+						<span class="label label-warning"><?= $photos_rev; ?> New Photos</span>
+					  </div>
+					</div><!-- /.box-header -->
+					<div class="box-body no-padding">
+					  <ul class="users-list clearfix">
+						<?=  getPhotosReview(); ?>
+					  </ul><!-- /.users-list -->
+					</div><!-- /.box-body -->
+					<div class="box-footer text-center">
+					  <a href="index.php?page=admin&p=photos&f=2" class="uppercase">View All Photos</a>
+					</div><!-- /.box-footer -->
+				  </div><!--/.box -->
+				</div><!-- /.col -->                                  
+            <?
+			}
+			?>			
+            <div class='col-md-6'>
+              <div class="box box-success">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Online Members</h3>
+                  <div class="box-tools pull-right">
+                    <span class="label label-success"><?= getTotalUsers(3); ?> Online Members</span>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                  <ul class="users-list clearfix">
+						<?= getOnlineUsers(); ?>
+                  </ul><!-- /.users-list -->
+                </div><!-- /.box-body -->
+                <div class="box-footer clearfix text-center">
+                  <a href="index.php?page=admin&p=users&f=2&o=id" class="uppercase">View All Users</a>
+                </div><!-- /.box-footer -->
+              </div><!--/.box -->
+            </div><!-- /.col -->  
+            
+            <div class='col-md-6'>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Latest Members</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                  <ul class="users-list clearfix">
+					<?= getLatestUsers(); ?>
+                  </ul><!-- /.users-list -->
+                </div><!-- /.box-body -->
+                <div class="box-footer clearfix text-center">
+                  <a href="index.php?page=admin&p=users&f=1&o=id" class="uppercase">View All Users</a>
+                </div><!-- /.box-footer -->
+              </div><!--/.box -->
+            </div><!-- /.col -->                        
+          </div><!-- /.row -->              
+
+
+        </section>
+      </div>

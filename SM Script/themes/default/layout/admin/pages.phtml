@@ -1,0 +1,99 @@
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Manage Pages
+          </h1>
+        </section>
+		<script>aurl = 'pages';</script>
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Custom css</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" action="#" id="site-css">
+				<input type="hidden" value="css" name="action" />	
+                  <div class="box-body">
+                    <div class="form-group">
+					  <textarea class="form-control" rows="10" name="site_css" ><?= siteConfig('css'); ?></textarea>
+                    </div>						
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update custom css</button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+			</div>
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Custom javascript</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" action="#" id="site-js">
+				<input type="hidden" value="js" name="action" />	
+                  <div class="box-body">
+                    <div class="form-group">
+					  <textarea class="form-control" rows="10" name="site_js" ><?= siteConfig('js'); ?></textarea>
+                    </div>						
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update custom javascript </button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+			</div>			
+		</div>			
+          <div class="row">
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Terms</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" action="#" id="site-terms">
+				<input type="hidden" value="terms" name="action" />	
+                  <div class="box-body">
+                    <div class="form-group">
+					  <textarea class="form-control" rows="10" name="site_terms" ><?= siteConfig('terms'); ?></textarea>
+                    </div>						
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update site terms</button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+			</div>
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Privacy</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" action="#" id="site-privacy">
+				<input type="hidden" value="privacy" name="action" />	
+                  <div class="box-body">
+                    <div class="form-group">
+					  <textarea class="form-control" rows="10" name="site_privacy" ><?= siteConfig('privacy'); ?></textarea>
+                    </div>						
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update site privacy </button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+			</div>			
+		</div>	
+		
+		
+	</section>
+</div>	

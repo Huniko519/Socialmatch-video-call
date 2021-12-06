@@ -1,0 +1,39 @@
+            <div class="col s7 real">			
+                <div class="profile-menu center-align ">
+                    <ul>					
+                        <li  data-url="about"  data-uid="<?= $sm['profile']['id']; ?>">
+                            <?= $sm['lang'][117]['text']; ?><?= $sm['profile']['first_name']; ?>
+                        </li>						
+						<? if($sm['profile']['total_photos_public'] > 0){ ?>
+                        <li class="selected" data-url="photos" data-uid="<?= $sm['profile']['id']; ?>">
+                            <b><?= $sm['profile']['total_photos_public']; ?></b> <?= $sm['lang'][67]['text']; ?>
+                        </li>
+						<? } else { ?>
+                        <li>
+                            <b>0</b> <?= $sm['lang'][67]['text']; ?>
+                        </li>
+						<? } ?>
+						
+						<? if($sm['profile']['total_photos_private'] > 0){ ?>
+                        <li   data-url="p_photos"  data-uid="<?= $sm['profile']['id']; ?>">
+                            <b><?= $sm['profile']['total_photos_private']; ?></b> <?= $sm['lang'][68]['text']; ?>
+                        </li>   
+						<? } else { ?>
+                        <li>
+                            <b>0</b> <?= $sm['lang'][68]['text']; ?>
+                        </li>
+						<? } ?>	
+						<? if($sm['profile']['id'] != $sm['user']['id']){ ?>
+                        <li style="background:#fff !important;" onclick="reportUser(<?= $sm['profile']['id']; ?>,'<?= $sm['profile']['first_name']; ?>','<?= $sm['profile']['profile_photo']; ?>');">
+							<span style="color:#E62117"><?=$sm['lang'][277]['text'];?></span>
+                        </li>
+						<? } ?>							
+                    </ul>
+                </div>
+                
+                <div class="profile-content-photos">
+                    <div class="photos left-algin">
+						<?= getUserPhotos($sm['profile']['id']); ?>
+                    </div>
+                </div>
+            </div> 

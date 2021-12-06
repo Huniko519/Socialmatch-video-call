@@ -1,0 +1,276 @@
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            General settings
+          </h1>
+        </section>
+		<script>aurl = 'website';</script>
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Website Settings</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" action="#" id="website-settings">
+				<input type="hidden" value="website" name="action" />
+                  <div class="box-body">
+                    <div class="form-group" style="background:#4a6d97">
+					  <img src="<?= $sm['config']['logo']; ?>" style="border:2px solid #fff; width:120px;" />
+					  <input type="hidden" value="<?= $sm['config']['logo']; ?>" name="site_logo" />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Site logo</label>
+					  <input class="form-control" value="<?= $sm['config']['logo']; ?>" name="site_logo" />
+                    </div>					
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Site name</label>
+					  <input class="form-control" value="<?= $sm['config']['name']; ?>" name="site_name" />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Site email [for contact form]</label>
+					  <input class="form-control" value="<?= $sm['config']['email']; ?>" name="site_email" />
+                    </div>					
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Site title</label>
+                     <input class="form-control" value="<?= $sm['config']['title']; ?>" name="site_title" />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Site description</label>
+					  <input class="form-control" value="<?= $sm['config']['description']; ?>" name="site_desc" />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Site keywords</label>
+                     <input class="form-control" value="<?= $sm['config']['keywords']; ?>" name="site_keywords" />
+                    </div>					
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Site default language</label>
+						<select class="form-control" name="site_lang" >
+							<option value="<?= $sm['config']['lang']; ?>"> <?= getCurrentLang($sm['config']['lang']); ?> </option>
+							<?= getSiteLangs($sm['config']['lang']); ?>
+						</select>
+                    </div>	
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Automatic approve new photos?</label>
+						<select class="form-control" name="site_photo_review" >
+						<? if($sm['config']['photo_review'] == 1){ ?>
+							<option value="1">Yes</option>						
+							<option value="0">No</option>
+						<? } else { ?>
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						<? } ?>
+						</select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Email verification for access the site?</label>
+						<select class="form-control" name="site_email_verification" >
+						<? if($sm['config']['email_verification'] == 1){ ?>
+							<option value="1">Yes</option>						
+							<option value="0">No</option>
+						<? } else { ?>
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						<? } ?>
+						</select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Free credits to new users</label>
+                     <input class="form-control" value="<?= $sm['config']['free_credits']; ?>" name="site_free_credits" />
+                    </div>	
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Free premium to new users (in days)</label>
+                     <input class="form-control" value="<?= $sm['config']['free_premium']; ?>" name="site_free_premium" />
+                    </div>						
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update website settings</button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+			  
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Video call server</h3>
+				  <p style="color:#999">Leave this field empty for remove the videocall function</p>				  
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" action="#" id="vserver-settings">
+				<input type="hidden" value="vserver" name="action" />
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Videochat server</label>
+					  <input class="form-control" value="<?= $sm['config']['videocall']; ?>" name="videocall_host" />
+                    </div>									
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary" >Update Videochat server</button>
+					<a href="http://premiumdatingscript.com/documentation" target="_blank" class="btn btn-info">Tutorial Videocall </a>	
+                  </div>
+                </form>
+              </div><!-- /.box -->
+
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Currency Settings</h3>
+				  <p style="color:#999">Choose price currency,here is a list of <a href="https://developer.paypal.com/docs/classic/api/currency_codes/" target="_blank">currency codes</a></p>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" action="#" id="currency-settings">
+				<input type="hidden" value="currency" name="action" />				
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Currency</label>
+					  <input class="form-control" value="<?= $sm['config']['currency']; ?>" name="site_currency" />
+                    </div>					
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update Currency</button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+			  
+			</div>
+            <div class="col-md-6">
+              <div class="box box-danger">
+                <div class="box-header">
+                  <h3 class="box-title"><b style="color:#ff2233">IMPORTANT!</b><br>Google Maps Javascript Api Key</h3>
+				  <p style="color:#999">This key is necesary for the script GEOLOCATION , for register new account and etc</p>				  
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" action="#" id="geokey-settings">
+				<input type="hidden" value="geokey" name="action" />
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">GMaps JS Api Key</label>
+					  <input class="form-control" value="<?= siteConfig('google_maps'); ?>" name="google_maps" />
+                    </div>									
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary" >Add Google Map key</button>
+					<a href="https://console.developers.google.com/flows/enableapi?apiid=maps_backend,geocoding_backend,directions_backend,distance_matrix_backend,elevation_backend,places_backend&keyType=CLIENT_SIDE&reusekey=true" target="_blank" class="btn btn-success">GET API KEY</a>
+                  </div>
+                </form>
+              </div><!-- /.box -->			
+              <!-- general form elements -->
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">SMTP Email Settings</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+               <form action="#" id="smtp-settings">
+				<input type="hidden" value="smtp" name="action" />			   
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">SMTP HOST</label>
+					  <input class="form-control" value="<?= $sm['config_email']['host']; ?>" name="email_host" />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">SMTP PORT</label>
+					  <input class="form-control" value="<?= $sm['config_email']['port']; ?>" name="email_port" />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">SMTP EMAIL (USERNAME)</label>
+					  <input class="form-control" value="<?= $sm['config_email']['user']; ?>" name="email_email" />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">SMTP PASSWORD</label>
+					  <input class="form-control" value="<?= $sm['config_email']['password']; ?>" name="email_pswd" />
+                    </div>					
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary" >Update SMTP settings</button>
+					<a href="#" data-testsmtp='1' class="btn btn-success">Test SMTP</a>					
+					<a href="http://premiumdatingscript.com/documentation" target="_blank" class="btn btn-info">Tutorial Mandrill SMTP</a>	
+                  </div>
+                </form>
+              </div><!-- /.box -->				  
+
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Amazon AWS S3 storage</h3>
+				  <p style="color:#999">Fill the fileds for upload the photos to your amazon aws s3 bucket</p>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+               <form action="#" id="s3-settings">
+				<input type="hidden" value="s3" name="action" />			   
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Bucket name</label>
+					  <input class="form-control" value="<?= siteConfig('s3_bucket'); ?>" name="s3_bucket" />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Access key</label>
+					  <input class="form-control" value="<?= siteConfig('s3'); ?>" name="s3_key" />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Secret Access key</label>
+					  <input class="form-control" value="<?= siteConfig('s3_key'); ?>" name="s3_secret" />
+                    </div>			
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary" >Update Amazon S3</button>			
+					<a href="http://premiumdatingscript.com/documentation" target="_blank" class="btn btn-info">Tutorial Amazon S3 AWS</a>	
+                  </div>
+                </form>
+              </div><!-- /.box -->
+
+			  
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Social Connect Settings</h3>
+				  <p style="color:#999">Leave the social network field empty for remove them</p>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+               <form action="#" id="social-connect">
+				<input type="hidden" value="social-connect" name="action" />			   
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Facebook App Id</label>
+					  <input class="form-control" value="<?= siteConfig('fb_app_id'); ?>" name="fb_id" />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Facebook App Secret Key</label>
+					  <input class="form-control" value="<?= siteConfig('fb_app_secret'); ?>" name="fb_key" />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Twitter Key</label>
+					  <input class="form-control" value="<?= siteConfig('twitter_key'); ?>" name="twitter_key" />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Twitter Secret</label>
+					  <input class="form-control" value="<?= siteConfig('twitter_secret'); ?>" name="twitter_secret" />
+                    </div>	
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Google Key</label>
+					  <input class="form-control" value="<?= siteConfig('google_key'); ?>" name="google_key" />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Google Secret</label>
+					  <input class="form-control" value="<?= siteConfig('google_secret'); ?>" name="google_secret" />
+                    </div>	
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Instagarm Key</label>
+					  <input class="form-control" value="<?= siteConfig('instagram_key'); ?>" name="instagram_key" />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Instagram Secret</label>
+					  <input class="form-control" value="<?= siteConfig('instagram_secret'); ?>" name="instagram_secret" />
+                    </div>						
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary" >Update Social</button>
+                  </div>
+                </form>
+              </div><!-- /.box -->			
+
+					  
+			</div>
+		</div>			
+	</section>
+</div>	

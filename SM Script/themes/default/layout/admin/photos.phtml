@@ -1,0 +1,57 @@
+	<?
+	$photos_rev = getTotalPhotosReview();
+	$f = secureEncode($_GET['f']);
+	?>
+      <div class="content-wrapper">
+        <section class="content-header">
+		<? if($f == 1){ 
+          echo '<h1>Total photos</h1>';
+		 }  if($f == 2){ 
+          echo '<h1>Photos for review</h1>';
+		 }  if($f == 3){ 
+          echo '<h1>Private photos</h1>';
+		 } 
+		?>
+        </section>	  
+		<script>aurl = 'photos';</script>
+        <section class="content">
+          <div class="row">
+				<div class='col-md-12'>
+				  <div class="box box">
+					<div class="box-header with-border">
+					  <h3 class="box-title">Manage photos click and press "1" for approve, "2" for discard , "3" for private and "W" for view</h3>
+					  <div class="box-tools pull-right">
+						<a href="index.php?page=admin&p=photos&f=1" class="label label-info">(<?= getTotalPhotos(1); ?>) Total Photos</a>						
+						<a href="index.php?page=admin&p=photos&f=3" class="label label-danger">(<span data-private-photos="<?= getTotalPhotosPrivate(); ?>"><?= getTotalPhotosPrivate(); ?></span>) Private Photos</a>
+						<a href="index.php?page=admin&p=photos&f=2" class="label label-warning">(<span data-review-photos="<?= $photos_rev; ?>"><?= $photos_rev; ?></span>) Review Photos</a>						
+					  </div>
+					</div><!-- /.box-header -->
+					<div class="box-body no-padding">
+					  <ul class="users-list clearfix">
+						<?  $d = 0;
+							if($_GET['x'] != ''){
+								$x = secureEncode($_GET['x']);
+								$d = $x * 50; 
+							}
+							echo getAdminPhotos($f,$d);
+						?>					  
+					  </ul><!-- /.users-list -->
+					</div><!-- /.box-body -->
+					<div class="box-footer clearfix">
+					  <ul class="pagination pagination-sm no-margin pull-right">
+						<? if($d > 0){ ?>
+						<li><a href="index.php?page=admin&p=photos&f=<?= $f;?>&x=<?= $x-1;?>">Previous page (<?= $x-1;?>)</a></li>
+						<li><a href="index.php?page=admin&p=photos&f=<?= $f;?>&x=<?= $x+1;?>">Next page (<?= $x+1;?>)</a></li>				
+						<? } else { ?>
+						<li><a href="index.php?page=admin&p=photos&f=<?= $f;?>&x=1">Next page</a></li>		
+						<? } ?>
+
+					  </ul>
+					</div>
+				  </div><!--/.box -->
+				</div><!-- /.col -->   
+              </div><!-- /.box -->
+            </div>
+          </div>
+	</section>
+</div>	

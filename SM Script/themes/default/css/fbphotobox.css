@@ -1,0 +1,456 @@
+@CHARSET "UTF-8";
+.fbphotobox-overlay {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 1100;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+.fbphotobox-fc-main-container {
+	margin: auto;
+	position: fixed;
+	z-index: 1400;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+
+    margin-left: auto;
+    margin-right: auto;	
+	background-color: black;
+	display: none;
+}
+
+.fbphotobox-fc-main-container:hover {
+	cursor: pointer;
+}
+
+.fbphotobox-main-container {
+	margin:auto;
+	display:none;
+	position:fixed;
+	z-index: 1200;
+	top:0px;
+	right:0px;
+	left:0px;
+	bottom:0px;
+	border:1px solid #000;
+	border-radius:2px;
+	height:100%;
+	width:100%;
+    background: #fff;
+}
+
+.fbphotobox-container-left {
+
+	float: left;
+	position: relative;  
+}
+
+.fbphotobox-container-left:hover {
+	cursor: pointer;
+}
+
+.fbphotobox-container-left table td {
+	text-align: center;
+	vertical-align: middle;
+	height: 100%
+}
+
+.fbphotobox-container-right {
+	position:absolute;
+    top: 0;
+	right:0;
+    width: 100%;
+	background-color: #fff;
+    opacity: 1;
+}
+
+.fbphotobox-container-right .close {
+	position:absolute;
+    right: 5px;
+    top: 3px;
+}
+
+.fbphotobox-container-right .user-details{
+	position:relative;
+	left:0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+	background-color: #fff;
+    overflow: hidden;
+}
+
+.fbphotobox-container-right .user-details .like{
+	position:absolute;
+	right:15px;
+    top: 16px;
+    color: #fff;
+}
+
+.fbphotobox-container-right .user-details  .likes{
+	position:relative;
+    top: -20px;
+    left: 0px;
+    width: 100%;
+    height: 48px;
+    background: #5177a4;
+    color: #3567a2;
+}
+
+.fbphotobox-container-right .user-details .likes i{
+    position: absolute;
+    left: 20px;
+    top: 7px;
+    font-size: 24px;
+    color: #fff;
+}
+
+.fbphotobox-container-right .user-details .likes span{ 
+    position: absolute;
+    left: 55px;
+    top: 12px;
+    width: 85%;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    color: #fff;    
+}
+
+.fbphotobox-container-right .user-details .likes span b{ 
+    color: #fff;    
+}
+
+
+.fbphotobox-container-right .user-details .likes span b{ 
+    color: #fff;    
+}
+
+
+.fbphotobox-container-right .user-details .profile-photo{
+    position: relative;
+    margin: 20px;
+    width: 50px;
+    height: 50px;
+    background-size:   cover;
+    background-repeat: no-repeat;
+    background-position: top center;    
+}
+
+.fbphotobox-container-right .user-details h1{ 
+    position: absolute;
+    top: -35px;
+    padding: 0;
+    left: 75px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    color: #3f729b;
+}
+.fbphotobox-container-right .user-details h1 i{ 
+    font-size: 8px;
+    color:#17d425;
+}
+.fbphotobox-container-right .user-details span{ 
+    position: absolute;
+    top: 40px;
+    font-size: 12px;
+    left: 75px;   
+    font-weight: 600;
+    color: #888;
+}
+
+.fbphotobox-container-right .user-details p{ 
+    position: relative;
+    top: -5px;
+    left: 20px; 
+    width: 94%;
+    max-height: 60px;
+    overflow-x: hidden;
+    font-size: 13px;   
+    font-weight: 300;
+    color: #111;
+    line-height: 22px;
+    padding-bottom: 10px;
+}
+
+
+.fbphotobox-container-right .user-details .comments{ 
+	position:relative;
+    top: -20px;
+    left: 0px;
+    padding-top:1px;
+    width:100%;
+    height: 100%;
+    background: #f8f8f8;
+    color: #3567a2;
+    overflow-x: hidden;    
+    overflow-y: auto;
+}
+
+.fbphotobox-container-right .user-details .comments ul li{
+    position: relative;
+    width: 100%;
+}
+
+.fbphotobox-container-right .user-details .comments ul li .profile-photo{ 
+    position: relative;
+    top: 10px;
+    margin: 10px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    width: 40px;
+    height: 40px;
+    background-size:   cover;
+    background-repeat: no-repeat;
+    background-position: top center;  
+    border-radius: 10px;
+}
+
+.fbphotobox-container-right .user-details .comments ul li h3{ 
+    position: absolute;
+    top: 10px;    
+    padding: 0;
+    margin: 0;
+    left: 69px;
+    width: 100%;
+    line-height: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    color: #3f729b;
+}
+
+.fbphotobox-container-right .user-details .comments ul li h3 a{ 
+    color: #3f729b;
+}
+
+.fbphotobox-container-right .user-details .comments ul li h3 i{ 
+    font-size: 8px;
+    color:#17d425;
+}
+
+.fbphotobox-container-right .user-details .comments .comment{
+    position: relative;
+    margin-top: -35px;
+    left: 69px;
+    width: 80%;
+    font-size: 13px;
+    font-weight: 400;
+    color: #666;
+}
+
+.fbphotobox-container-right .user-details .new-comment{ 
+	position:absolute;
+    bottom: 0px;
+    left: 0px;
+    padding-top:1px;
+    width:100%;
+    height: 60px;
+    border-top: 1px solid #ccc;
+    background: #e7e7e7;
+    color: #3567a2;
+    overflow-x: hidden;    
+    overflow-y: hidden;
+}
+
+.fbphotobox-container-right .user-details .new-comment .profile-photo{ 
+    position: relative;
+    top: 4px;
+    margin: 2px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    width: 40px;
+    height: 40px;
+    background-size:   cover;
+    background-repeat: no-repeat;
+    background-position: top center;  
+    border-radius: 10px;
+}
+
+.fbphotobox-container-right .user-details .new-comment input{ 
+    position: absolute;
+    top: 6px;
+    left: 70px;
+    width: 75%;
+    height: 40px; 
+    padding-left: 5px;
+    border-radius: 10px;
+    color: #666;
+    background: #fff;
+    border: none;
+}
+
+.fbphotobox-container-right .user-details .new-comment input:focus{ 
+    outline: none;
+}
+
+
+.fbphotobox-container-footer {
+	position:absolute;
+	bottom:0;
+	right:0;
+	float: right;
+	background-color: white;
+}
+
+.fbphotobox-container-left-footer, .fbphotobox-container-left-footer-bg {
+	position: absolute;
+	color: white;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+}
+
+.fbphotobox-container-left-footer {
+	z-index: 300;
+	height: 56px;
+	overflow: hidden;
+}
+
+.fbphotobox-container-left-footer-bg {
+	background-color: black;
+	opacity: 0.75;
+	height: 56px;
+}
+
+.fbphotobox-container-left-header {
+	top: 0px;
+	right: 0px;
+	margin: 15px;
+	position: absolute;
+	color: white;
+	z-index:500;
+}
+
+.left-arrow {
+	position: absolute;
+	height: 100%;
+	left: 10px;
+	top: 0px;
+}
+
+.right-arrow {
+	position: absolute;
+	height: 100%;
+	right: 10px;
+	top: 0px;
+}
+
+.fbphotobox-a {
+	opacity: 0.5;
+}
+
+.fbphotobox-image-stage-overlay {
+	display: none;
+}
+
+.fbphotobox-tag {
+	height:100px;
+	width:100px;
+	border-radius:3px;
+	opacity: 1;
+	background-image: url(../images/transparent.png);
+}
+
+.fbphotobox-tag div {
+	width:100%;
+	border-radius:none;
+	display: none;
+}
+
+.fbphotobox-tag:hover {
+	border:3px solid white;
+	box-shadow: 0px 0px 5px #333;
+}
+
+.fbphotobox-tag:hover div {
+	display: inline-block;
+	opacity: 1;
+}
+
+table, tr, td {
+	border:none;
+	padding:0px;
+	border-collapse: collapse;
+}
+
+.fbphotobox-fc-close-btn:hover {
+	background-color: #fff;
+}
+
+.fbphotobox-main-image-table {
+	height:100%;
+	width:100%;
+	text-align:center;
+	table-layout:fixed;
+}
+
+.fbphotobox-fc-btn {
+	background-image: url(../images/fullscreen.png);
+	background-repeat: no-repeat;background-size:auto;
+	background-position: 0 0;
+	display: block;
+	width:18px;
+	height:18px;
+}
+
+.fbphotobox-image-content {
+	color:black;overflow:hidden;
+}
+
+.fbphotobox-fc-header {
+	position:fixed;left:0px;right:0px;top:0px;color:white;
+}
+
+.fbphotobox-fc-close-btn {
+	color: #FFFFFF;float: right;text-decoration: none;
+}
+
+.fbphotobox-fc-footer {
+	position:fixed;left:0px;right:0px;bottom:0px;color:white;
+}
+
+.fbphotobox-overlay {
+	display:none;
+}
+
+.fbphotobox-main-image-table .tag-container {
+	position:relative;
+	display:inline-block;
+	*display:inline;
+}
+
+.left-arrow .fbphotobox-a {
+	background-image: url(../images/Arrows-LWhite-icon.png);
+	background-repeat: no-repeat;
+	background-size:auto;
+	background-position: 0px 0px;
+	display: block;
+	height: 48px;
+	width: 48px;
+}
+
+.right-arrow .fbphotobox-a {
+	background-image: url(../images/Arrows-RWhite-icon.png);
+	background-repeat: no-repeat;
+	background-size:auto;
+	background-position: 0px 0px;
+	display: block;
+	height: 48px;
+	width: 48px;
+}
+
+.fc-left-arrow a {
+	background-image: url(../images/Arrows-LWhite-icon.png);
+	float:left;background-repeat: no-repeat;background-size:auto;background-position: 0px 0px;height: 48px;width: 48px;
+}
+
+.fc-right-arrow a {
+	background-image: url(../images/Arrows-RWhite-icon.png);background-repeat: no-repeat;
+	float:right;background-size:auto;background-position: 0px 0px;height: 48px;width: 48px;
+}

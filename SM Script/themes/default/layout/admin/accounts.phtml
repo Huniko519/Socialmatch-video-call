@@ -1,0 +1,179 @@
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Accounts settings
+          </h1>
+        </section>
+		<script>aurl = 'accounts';</script>
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Free account settings</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" action="#" id="basic-acc-settings">
+				<input type="hidden" value="basic_acc" name="action" />
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Max daily NEW conversations</label>
+					  <input class="form-control" value="<?= $sm['basic']['chat']; ?>" name="site_basic_chat" />
+                    </div>	
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Can free users make videocalls?</label>
+						<select class="form-control" name="site_basic_videocall" >
+						<? if($sm['basic']['videocall'] == 1){ ?>
+							<option value="1">Yes</option>						
+							<option value="0">No</option>
+						<? } else { ?>
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						<? } ?>
+						</select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Can free users see the private photos?</label>
+						<select class="form-control" name="site_basic_private" >
+						<? if($sm['basic']['private'] == 1){ ?>
+							<option value="1">Yes</option>						
+							<option value="0">No</option>
+						<? } else { ?>
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						<? } ?>
+						</select>
+                    </div>	
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Can free users see who likes them?</label>
+						<select class="form-control" name="site_basic_fans" >
+						<? if($sm['basic']['fans'] == 1){ ?>
+							<option value="1">Yes</option>						
+							<option value="0">No</option>
+						<? } else { ?>
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						<? } ?>
+						</select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Can free users see who visited his profile?</label>
+						<select class="form-control" name="site_basic_visits" >
+						<? if($sm['basic']['visits'] == 1){ ?>
+							<option value="1">Yes</option>						
+							<option value="0">No</option>
+						<? } else { ?>
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						<? } ?>
+						</select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Show ads in mobile site to free users?</label>
+						<select class="form-control" name="site_basic_mobile_ads" >
+						<? if($sm['basic']['mobile_ads'] == 1){ ?>
+							<option value="1">Yes</option>						
+							<option value="0">No</option>
+						<? } else { ?>
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						<? } ?>
+						</select>
+                    </div>					
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update Free Accounts </button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+			</div>
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Premium account settings</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" action="#" id="premium-acc-settings">
+				<input type="hidden" value="premium_acc" name="action" />				
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Max daily NEW conversations</label>
+					  <input class="form-control" value="<?= $sm['premium']['chat']; ?>" name="site_premium_chat" />
+                    </div>	
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Can premium users make videocalls?</label>
+						<select class="form-control" name="site_premium_videocall" >
+						<? if($sm['premium']['videocall'] == 1){ ?>
+							<option value="1">Yes</option>						
+							<option value="0">No</option>
+						<? } else { ?>
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						<? } ?>
+						</select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Can premium users see the private photos?</label>
+						<select class="form-control" name="site_premium_private" >
+						<? if($sm['premium']['private'] == 1){ ?>
+							<option value="1">Yes</option>						
+							<option value="0">No</option>
+						<? } else { ?>
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						<? } ?>
+						</select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Can Premium users see who likes them?</label>
+						<select class="form-control" name="site_premium_fans" >
+						<? if($sm['premium']['fans'] == 1){ ?>
+							<option value="1">Yes</option>						
+							<option value="0">No</option>
+						<? } else { ?>
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						<? } ?>
+						</select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Can Premium users see who visited his profile?</label>
+						<select class="form-control" name="site_premium_visits" >
+						<? if($sm['premium']['visits'] == 1){ ?>
+							<option value="1">Yes</option>						
+							<option value="0">No</option>
+						<? } else { ?>
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						<? } ?>
+						</select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Show ads in mobile site to premium users?</label>
+						<select class="form-control" name="site_premium_mobile_ads" >
+						<? if($sm['premium']['mobile_ads'] == 1){ ?>
+							<option value="1">Yes</option>						
+							<option value="0">No</option>
+						<? } else { ?>
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						<? } ?>
+						</select>
+                    </div>						
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update Premium Accounts </button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+			</div>			
+		</div>	
+		
+		
+	</section>
+</div>	

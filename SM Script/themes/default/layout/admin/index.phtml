@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Social Match| Admin Dashboard</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <link href="<?php echo $sm['config']['theme_url']; ?>/admin/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $sm['config']['theme_url']; ?>/admin/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $sm['config']['theme_url']; ?>/css/sweetalert.css">		
+    <link href="<?php echo $sm['config']['theme_url']; ?>/admin/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $sm['config']['theme_url']; ?>/css/wdt-emoji-bundle.css"/>  
+	<?php
+
+	$site_config = json_encode($sm['config']);
+	$site_prices = json_encode($sm['price']);
+	$account_basic = json_encode($sm['basic']);
+	$account_premium = json_encode($sm['premium']);
+	$site_lang = json_encode($sm['lang']);
+	$user_info = json_encode($sm['user']);
+	$filter_age = 0;
+	echo 
+	'<script>
+	var url;
+	var aurl;
+	var mobile = false;
+	var site_config = '. $site_config  . ';
+	var site_prices = '. $site_prices  . ';
+	var account_basic = '. $account_basic  . ';
+	var account_premium = '. $account_premium  . ';
+	var site_lang = '. $site_lang  . ';
+	var user_info = '. $user_info  . ';
+	function request_source(){
+		return \'' . $sm['config']['ajax_path'] . '\';
+	}
+	function site_title(){
+		return \'' . $sm['config']['title'] . '\';
+	}	
+	function theme_source(){
+		return \'' . $sm['config']['theme_url'] . '\';
+	}
+	function site_url(){
+		return \'' . $sm['config']['site_url'] . '\';
+	}	
+	function user_id(){
+		return \'' . $sm['user']['id'] . '\';
+	}
+	var current_user_id = 0;
+	var user_name;	
+	</script>';
+	?>
+  </head>
+  <body class="skin-blue">
+    <div class="wrapper">
+      <header class="main-header">
+        <a href="index.php?page=admin" class="logo"><b>Social Match</b> Admin </a>
+        <nav class="navbar navbar-static-top" role="navigation">
+			<a href="index.php?page=index" class="logo pull-right">
+			Go to site
+          </a>
+        </nav>
+      </header>
+      <aside class="main-sidebar">
+        <section class="sidebar">
+          <ul class="sidebar-menu">
+            <li class="header">Menu</li>
+            <li data-aurl='dashboard'><a href="index.php?page=admin&p=statics"><span>Dashboard</span></a></li>
+            <li data-aurl='website'><a href="index.php?page=admin&p=website"><span>General Settings</span></a></li>
+            <li data-aurl='payment'><a href="index.php?page=admin&p=payment"><span>Payments Settings</span></a></li>		
+            <li data-aurl='accounts'><a href="index.php?page=admin&p=accounts"><span>Accounts settings</span></a></li>
+            <li data-aurl='apps'><a href="index.php?page=admin&p=apps"><span>Mobile apps settings</span></a></li>
+            <li data-aurl='fake'><a href="index.php?page=admin&p=fake"><span>Fake users chat</span></a></li>			
+            <li data-aurl='gifts'><a href="index.php?page=admin&p=gifts"><span>Gifts settings</span></a></li> 
+            <li data-aurl='lang'><a href="index.php?page=admin&p=lang"><span>Language System</span></a></li>
+            <li data-aurl='themes'><a href="index.php?page=admin&p=themes"><span>Installed Themes</span></a></li>			
+            <li data-aurl='ads'><a href="index.php?page=admin&p=ads"><span>Manage advertise</span></a></li>
+            <li data-aurl='users'><a href="index.php?page=admin&p=users&f=1&o=id"><span>Manage users</span></a></li>
+            <li data-aurl='reports'><a href="index.php?page=admin&p=reports"><span>User reports</span></a></li> 			
+            <li data-aurl='photos'><a href="index.php?page=admin&p=photos&f=2"><span>Manage photos</span></a></li> 
+            <li data-aurl='pages'><a href="index.php?page=admin&p=pages"><span>Manage pages</span></a></li>  			
+          </ul>
+        </section>
+      </aside>
+
+		<div id="admin-content"><?php echo $sm['content']; ?></div>
+		
+		
+      <footer class="main-footer">
+        <strong>Copyright &copy; 2016 <a href="http://premiumdatingscript.com">Premium Dating Script</a>.</strong> All rights reserved.
+      </footer>
+
+    </div>
+
+	<script src="<?php echo $sm['config']['theme_url']; ?>/js/jquery-2.1.1.js"></script>
+	<script src="<?php echo $sm['config']['theme_url']; ?>/js/jquery.form.min.js"></script>
+	<script src="<?php echo $sm['config']['theme_url']; ?>/js/materialize.js"></script>
+	<script src="<?php echo $sm['config']['theme_url']; ?>/js/fbphotobox.js"></script>
+	<script src="<?php echo $sm['config']['theme_url']; ?>/js/sweetalert.min.js"></script> 
+	<script src="<?php echo $sm['config']['theme_url']; ?>/js/jquery.preload.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places&key=<?= siteConfig('google_maps'); ?>"></script>
+	<script type="text/javascript" src="<?php echo $sm['config']['theme_url']; ?>/js/emoji.min.js"></script>
+	<script type="text/javascript" src="<?php echo $sm['config']['theme_url']; ?>/js/wdt-emoji-bundle.js"></script>	
+	<script src="<?php echo $sm['config']['theme_url']; ?>/admin/js/admin.js"></script>		
+	<script src="<?php echo $sm['config']['theme_url']; ?>/js/socialmatch.js"></script>
+
+    <script src="<?php echo $sm['config']['theme_url']; ?>/admin/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+  </body>
+</html>

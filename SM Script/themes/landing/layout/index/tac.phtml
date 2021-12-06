@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title><?php echo $sm['config']['title']; ?></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+		<meta name="description" content="<?php echo $sm['config']['description']; ?>">
+		<meta name="keywords" content="<?php echo $sm['config']['keywords']; ?>">
+		<meta name="author" content="<?php echo $sm['config']['name']; ?>">
+		<script src="<?php echo $sm['config']['theme_url']; ?>/landing/js/jquery.min.js"></script>
+		<script src="<?php echo $sm['config']['theme_url']; ?>/landing/js/jquery.dropotron.min.js"></script>
+		<script src="<?php echo $sm['config']['theme_url']; ?>/landing/js/jquery.scrollgress.min.js"></script>
+		<script src="<?php echo $sm['config']['theme_url']; ?>/landing/js/skel.min.js"></script>
+		<script src="<?php echo $sm['config']['theme_url']; ?>/landing/js/skel-layers.min.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>	
+		<noscript>		
+		<link rel="stylesheet" href="<?php echo $sm['config']['theme_url']; ?>/landing/css/skel.css" />
+		<link rel="stylesheet" href="<?php echo $sm['config']['theme_url']; ?>/landing/css/style.css" />
+		<link rel="stylesheet" href="<?php echo $sm['config']['theme_url']; ?>/landing/css/style-wide.css" />
+		</noscript>
+		<?php
+
+		$site_config = json_encode($sm['config']);
+		$site_lang = json_encode($sm['lang']);
+		$user_info = json_encode($sm['user']);
+		$filter_age = 0;
+		echo 
+		'<script>
+		var url;
+		var site_config = '. $site_config  . ';
+		var site_lang = '. $site_lang  . ';
+		var user_info = '. $user_info  . ';
+		function request_source(){
+			return \'' . $sm['config']['ajax_path'] . '\';
+		}
+		function site_title(){
+			return \'' . $sm['config']['title'] . '\';
+		}	
+		function theme_source(){
+			return \'' . $sm['config']['theme_url'] . '\';
+		}
+		function site_url(){
+			return \'' . $sm['config']['site_url'] . '\';
+		}	
+		function user_id(){
+			return \'' . $sm['user']['id'] . '\';
+		}
+		var current_user_id = 0;
+		var user_name;	
+		</script>';
+		?>		
+	</head>
+	<body class="landing">
+			<section id="cta">
+				<center><h2><?= $sm['config']['name'];?></h2><h3><?= $sm['lang'][103]['text']; ?></h3><center>
+				<?= siteConfig('terms');?>
+			</section>						
+	</body>
+</html>

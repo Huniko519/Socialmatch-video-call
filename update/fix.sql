@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS `emails`;
+CREATE TABLE `emails` (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
+  `type` int(1) DEFAULT NULL,
+  `uid` int(9) DEFAULT NULL,
+  `code` varchar(300) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;

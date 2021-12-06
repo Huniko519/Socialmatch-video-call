@@ -1,0 +1,31 @@
+			<script>
+			url = "fans";
+			</script>            
+			<div class="col s7 real" id="site-content">              
+                <div class="profile-menu ">
+                    <ul>
+                        <li class="selected" >
+                            <?= $sm['lang'][101]['text']; ?>
+                        </li>                                     
+                    </ul>
+                </div>
+				
+                <div class="wall" > 
+					<? $fans = totalFans($sm['user']['id']);
+						if($sm['user']['premium'] == 0 && $fans > 0 && $sm['basic']['fans'] == 0){ ?>			
+					<center>				
+					<i class="mdi-action-lock-outline" style="padding-top:65px;color:#666;font-size:166px;"></i>	
+					<h5 style="color:#333;font-size:16px;">			
+					<?= $sm['user']['first_name']; ?> <b><?= totalFans($sm['user']['id']);?></b>
+					<?= $sm['lang'][296]['text']; ?> <a href="javascript:;" data-premium="1" style="color:#c80678"> <?= $sm['lang'][294]['text']; ?></a> 
+					<br>		
+					</h5>									
+					</center>				
+					<? } else { 	
+						echo userFans();
+					} ?>  				
+
+                </div>
+
+        
+            </div> 

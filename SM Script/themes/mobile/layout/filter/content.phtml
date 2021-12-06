@@ -1,0 +1,85 @@
+		<script>
+		url = "filter";
+		document.getElementById("navbar-title").innerHTML=site_lang[106]['text'];
+		document.getElementById("filter_ok").style.display = "block";
+		document.getElementById("filter_cancel").style.display = "block";
+		document.getElementById("menu-button").style.display = "none";		
+		</script>
+        <div class="w-form" style="padding:20px;">
+          <form id="m-filter-form"  method="GET" action="mobile.php">
+            <div class="separator-fields"></div>
+            <div class="separator-fields"></div>
+            <div class="row-input-list">
+			<input type="hidden" name="page" value="<?= $_SESSION['prev']; ?>"/>
+              <div class="w-clearfix input-form one-line">
+                <label class="label-form middle" for="email"><?= $sm['lang'][109]['text']; ?></label>
+                <div class="w-clearfix radios-container">
+                  <div class="w-radio w-clearfix radio-button">
+                    <div class="radio-bullet-replacement <? if($sm['user']['s_gender']==2){echo'checked';}?>"></div>
+                    <input class="w-radio-input radio-bullet" id="node-9" type="radio" name="looking" value="2" data-name="Radio3">
+                    <label class="w-form-label" for="node-9"><?= $sm['lang'][110]['text']; ?></label>
+                  </div>
+                  <div class="w-radio w-clearfix radio-button">
+                    <div class="radio-bullet-replacement <? if($sm['user']['s_gender']==1){echo'checked';}?>"></div>
+                    <input class="w-radio-input radio-bullet" id="node-6" type="radio" name="looking" value="1" data-name="Radio3">
+                    <label class="w-form-label" for="node-6"><?= $sm['lang'][111]['text']; ?></label>
+                  </div>
+                  <div class="w-radio w-clearfix radio-button">
+                    <div class="radio-bullet-replacement <? if($sm['user']['s_gender']==3){echo'checked';}?>"></div>
+                    <input class="w-radio-input radio-bullet" id="node-5" type="radio" name="looking" value="3" data-name="Radio3">
+                    <label class="w-form-label" for="node-5"><?= $sm['lang'][112]['text']; ?></label>
+                  </div>
+                </div>
+              </div>
+              <div class="separator-fields"></div>
+            </div>
+			<?php
+				$e_age = explode( ',', $sm['user']['s_age'] );
+				$age1 = $e_age[0];
+				$age2 = $e_age[1];
+			?>
+            <div class="w-clearfix">
+              <div class="row-input-list w50 left">
+                <label class="label-form" for="birthday-field"><?= $sm['lang'][300]['text']; ?> MIN</label>
+                <input class="w-input input-form" id="birthday-field" type="text" value="<?= $age1; ?>" name="age1" maxlength="2" data-name="birthday" required="required">
+                <div class="separator-fields"></div>
+              </div>
+              <div class="row-input-list w50">
+                <label class="label-form" for="birthday-field"><?= $sm['lang'][300]['text']; ?> MAX</label>
+                <input class="w-input input-form" id="birthday-field" type="text" value="<?= $age2; ?>" name="age2" maxlength="2" data-name="birthday" required="required">
+                <div class="separator-fields"></div>
+              </div>			  
+            </div>
+            <div class="row-input-list">
+              <div class="w-clearfix input-form one-line">
+                <label class="label-form middle" for="email"><?= $sm['lang'][114]['text']; ?> (KM)</label>
+                <div class="w-clearfix radios-container">
+                  <div class="w-radio w-clearfix radio-button">
+                    <div class="radio-bullet-replacement <? if($sm['user']['s_radius']<1000){echo'checked';}?>"></div>
+                    <input class="w-radio-input radio-bullet" id="node-16" type="radio" name="radius" value="500" data-name="Radio5">
+                    <label class="w-form-label" for="node-16"><?= $sm['lang'][32]['text']; ?></label>
+                  </div>
+                  <div class="w-radio w-clearfix radio-button">
+                    <div class="radio-bullet-replacement <? if($sm['user']['s_radius']>2000){echo'checked';}?>"></div>
+                    <input class="w-radio-input radio-bullet" id="node-17" type="radio" name="radius" value="100000" data-name="Radio5">
+                    <label class="w-form-label" for="node-17"><?= $sm['lang'][115]['text']; ?></label>
+                  </div>
+                </div>
+              </div>
+              <div class="separator-fields"></div>
+            </div>
+            <div class="row-input-list">
+              <div class="w-clearfix input-form one-line">
+                <label class="label-form middle" for="email"><?= $sm['lang'][151]['text']; ?></label>
+                <div class="w-clearfix radios-container">
+                  <div class="w-checkbox w-clearfix checkbox-field">
+                    <div class="checkbox-handle checked"></div>
+                    <input class="w-checkbox-input checkbox-input" id="checkbox" type="checkbox" name="status" value="1" data-name="Checkbox" checked >
+                    <label class="w-form-label checkbox-label" for="checkbox"></label>
+                  </div>
+                </div>
+              </div>
+              <div class="separator-fields"></div>
+            </div>			
+          </form>
+        </div>

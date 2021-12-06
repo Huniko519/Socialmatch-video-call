@@ -1,0 +1,31 @@
+		<?php
+			$status = 0;
+			if($_GET['status'] != NULL ){
+				$status = secureEncode($_GET['status']);
+			}
+			$page = 0;
+			if($_GET['l'] != NULL ){
+				$page = secureEncode($_GET['l']);
+			}
+			$age = $sm['user']['s_age'];
+			if($_GET['age1'] != NULL ){
+				$age = secureEncode($_GET['age1']);
+				$age = $age.','.secureEncode($_GET['age2']);			
+			}
+			$radius = $sm['user']['s_radius'];
+			if($_GET['radius'] != NULL ){
+				$radius = secureEncode($_GET['radius']);
+			}
+			$looking = $sm['user']['s_gender'];
+			if($_GET['looking'] != NULL ){
+				$looking = secureEncode($_GET['looking']);
+			}		
+		?>
+		<script>
+		url = "meet";
+		document.getElementById("navbar-title").innerHTML=site_lang[49]['text'];
+		document.getElementById("search_filter").style.display = "block";		
+		</script> 
+		  <div  id="meet_section">
+			 <?= meetFilterMobile($sm['user']['id'],$sm['user']['lang'],$looking,$age,$radius,$status,$page); ?>										  
+		  </div>	

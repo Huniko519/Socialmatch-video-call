@@ -1,0 +1,93 @@
+<?php 
+if($_GET['id'] != NULL ){
+	$usid = secureEncode($_GET['id']);	
+	getUserInfo($usid,1);
+}
+$profile_info = json_encode($sm['profile']);
+$check = blockedUser($sm['user']['id'],$sm['profile']['id']);
+if($check == 1){
+	header('Location:'.$sm['config']['site_url']);
+}
+visit($sm['user']['id'],$sm['profile']['id']);
+	
+echo 
+'<script>
+current_user_id = ' . $sm['profile']['id'] .';
+var profile_info = '. $profile_info  . ';	
+url = "chat";
+</script>';
+?>
+
+<div class="col s7 real" >
+	<div class="profile-photos-chat" id="profile-photos">
+		<?=		getUserPhotosHeaderChat($sm['profile']['id']); ?>  
+		<div class="photos-count" >
+			<i class="mdi-image-camera-alt"></i>
+			<span><?= $sm['profile']['total_photos']; ?></span>
+		</div>                     
+	</div>
+	
+	<div class="chat" id='chat-container'>
+		<?=getChat($sm['user']['id'],$sm['profile']['id']); ?>
+	</div>
+	<div id="bottom"></div>
+	<div class="wall-chat" >
+		<div class="profile-photo"  data-src="<?= $sm['user']['profile_photo']; ?>"></div>
+		<div class="update-form"> 
+			<form id="c-send" action="#">
+				<input id="chat-message" autocomplete="off" placeholder="<?= $sm['lang'][89]['text']; ?>" >
+				<input id="r_id" type="hidden" style='display:none'>
+			</form>
+			<form action="<?php echo $sm['config']['site_url']; ?>/assets/sources/sendphoto.php" method="post" enctype="multipart/form-data" id="sendPhoto">
+				<input name="image_file" id="photo-to-send" type="file"  style="display:none;"/>
+				<input id="rid" name="rid" type="hidden" style='display:none'>
+			</form>				
+		</div>
+		<div class="update-form-btn"> 
+			<div class="post-btn" id="chat-send" > <?= $sm['lang'][90]['text']; ?></div>			
+			<div class="post-btns">
+				<a href="javascript:;" id="send-photo"><i  class="mdi-image-photo-camera"></i></a>
+				<? if(siteConfig('videocall') !== ''){ ?>
+					<a href="javascript:;" id="videocall"><i class="mdi-av-videocam"></i></a>
+				<? } ?>
+			</div>
+		</div>                    
+	</div>
+	<div class="wdt-emoji-popup">
+		<a href="#" class="wdt-emoji-popup-mobile-closer"> &times; </a>
+		<div class="wdt-emoji-menu-content">
+			<div id="wdt-emoji-menu-header">
+				<a class="wdt-emoji-tab active" data-group-name="People"></a>
+				<a class="wdt-emoji-tab" data-group-name="Nature"></a>
+				<a class="wdt-emoji-tab" data-group-name="Foods"></a>
+				<a class="wdt-emoji-tab" data-group-name="Activity"></a>
+				<a class="wdt-emoji-tab" data-group-name="Places"></a>
+				<a class="wdt-emoji-tab" data-group-name="Objects"></a>
+				<a class="wdt-emoji-tab" data-group-name="Symbols"></a>
+				<a class="wdt-emoji-tab" data-group-name="Flags"></a>
+				<a class="wdt-emoji-tab" data-group-name="Custom"></a>
+			</div>
+			<div class="wdt-emoji-scroll-wrapper">
+				<div id="wdt-emoji-menu-items">
+					
+					<h3 id="wdt-emoji-search-result-title">Search Results</h3>
+					<div class="wdt-emoji-sections"></div>
+					<div id="wdt-emoji-no-result">No emoji found</div>
+				</div>
+			</div>
+			<div id="wdt-emoji-footer">
+				<div id="wdt-emoji-preview">
+					<span id="wdt-emoji-preview-img"></span>
+					<div id="wdt-emoji-preview-text">
+						<span id="wdt-emoji-preview-name"></span><br>
+						<span id="wdt-emoji-preview-aliases"></span>
+					</div>
+				</div>
+
+				<div id="wdt-emoji-preview-bundle">
+					<span></span>
+				</div>
+			</div>
+		</div>
+	</div>
+ </div>

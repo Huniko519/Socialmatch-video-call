@@ -1,0 +1,29 @@
+			<script>
+			url = "visits";
+			</script>            
+			<div class="col s7 real" id="site-content">              
+                <div class="profile-menu ">
+                    <ul>
+                        <li class="selected" >
+                            <?=$sm['lang'][286]['text'];?>
+                        </li>                                     
+                    </ul>
+                </div>
+				
+                <div class="wall" >
+					<? if($sm['user']['premium'] == 0 && $sm['basic']['visits'] == 0){ ?>			
+					<center>				
+					<i class="mdi-action-lock-outline" style="padding-top:65px;color:#666;font-size:166px;"></i>	
+					<h5 style="color:#333;font-size:16px;">			
+					<?= $sm['user']['first_name']; ?> <b><?= totalVisits($sm['user']['id']);?></b>
+					<?=$sm['lang'][293]['text'];?> <a href="javascript:;" data-premium="1" style="color:#c80678"> <?=$sm['lang'][293]['text'];?></a> 
+					<br>		
+					</h5>									
+					</center>				
+					<? } else { 	
+						echo getUserVisitors($sm['user']['id']);
+					} ?>  				
+                </div>
+
+        
+            </div> 

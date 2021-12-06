@@ -1,0 +1,23 @@
+			<script>
+			url = "matches";
+			</script>            
+			<div class="col s7 real" id="site-content">              
+                <div class="profile-menu ">
+                    <ul>
+                        <li class="selected" >
+                            <?= $sm['lang'][105]['text']; ?>
+                        </li>
+                        <a href="<?= $sm['config']['site_url']; ?>mylikes">
+						<li >
+                            <?= $sm['lang'][295]['text']; ?> <3
+                        </li> 
+						</a>
+                    </ul>
+                </div>
+				
+                <div class="wall" > 
+					<?= userMatches(); ?>
+                </div>
+
+        
+            </div> 

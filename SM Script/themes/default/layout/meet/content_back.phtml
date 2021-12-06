@@ -1,0 +1,58 @@
+			<?
+				$e_age = explode( ',', $sm['user']['s_age'] );
+				$age = $e_age[2];
+			?>
+			<script>
+			url = "meet";
+			</script>            
+			<div class="col s7 real" id="site-content">
+                <div class="post-btn-right" data-url="search"><i class="mdi-content-filter-list"></i> <?= $sm['lang'][106]['text']; ?></div>
+                <div class="post-btn-right-close"><i class="mdi-content-clear"></i></div>                
+                <div class="profile-menu ">
+                    <ul>
+                        <li class="selected" id="allusers" data-action="allusers" >
+                            <?= $sm['lang'][107]['text']; ?>
+                        </li>                           
+                        <li data-action="online" id="onlineusers" >
+                           <?= $sm['lang'][108]['text']; ?>
+                        </li>           
+                    </ul>
+                </div>
+    
+                <div class="search-post">
+                    <div class="profile-photo"  data-src="<?= $sm['user']['profile_photo']; ?>">
+
+                    </div>
+                    <div class="update-form"> 
+                        <span><?= $sm['lang'][109]['text']; ?></span>
+						  <input type="hidden" value="0" id="meet_filter_online" data-filter="meet_filter_online"/>
+						  <input type="hidden" value="0" id="meet_filter_limit" data-filter="meet_filter_limit"/>						  
+                          <select class="browser-default" data-filter="meet_filter_gender" id="meet_filter_gender">
+                            <option value="2" <? if($sm['user']['s_gender'] == 2) { echo 'selected'; } ?>><?= $sm['lang'][110]['text']; ?></option>
+                            <option value="1" <? if($sm['user']['s_gender'] == 1) { echo 'selected'; } ?>><?= $sm['lang'][111]['text']; ?></option>
+                            <option value="3" <? if($sm['user']['s_gender'] == 3) { echo 'selected'; } ?>><?= $sm['lang'][112]['text']; ?></option>
+                          </select>
+                        <span><?= $sm['lang'][113]['text']; ?></span>
+                          <select class="browser-default" data-filter="meet_filter_age" id="meet_filter_age" style="width:18%;">
+                            <option value="1" <? if($age == 1)  { echo 'selected'; }  ?>>18 <?= $sm['lang'][44]['text']; ?> 23</option>
+                            <option value="2" <? if($age == 2)  { echo 'selected'; }  ?>>24 <?= $sm['lang'][44]['text']; ?> 31</option>
+                            <option value="3" <? if($age == 3)  { echo 'selected'; }  ?>>32 <?= $sm['lang'][44]['text']; ?> 50</option>
+                            <option value="4" <? if($age == 4)  { echo 'selected'; }  ?>>51 +</option>                              
+                          </select>                        
+                        <span><?= $sm['lang'][114]['text']; ?></span>
+                          <select class="browser-default" data-filter="meet_filter_radius" id="meet_filter_radius" style="width:16%;">
+                            <option value="100" <? if($sm['user']['s_radius'] == 100) { echo 'selected'; } ?>>100 KM</option>
+                            <option value="500" <? if($sm['user']['s_radius'] == 500)  { echo 'selected'; } ?>>500 KM</option>
+                            <option value="1000" <? if($sm['user']['s_radius'] == 1000) { echo 'selected'; } ?>>1000 KM</option>
+                            <option value="100000" <? if($sm['user']['s_radius'] > 1001)  { echo 'selected'; } ?> ><?= $sm['lang'][115]['text']; ?></option>                              
+                          </select>                        
+                    </div>                   
+                </div>
+    
+    
+                <div class="wall" id="meet_section"> 
+									
+                </div>
+
+        
+            </div> 

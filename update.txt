@@ -1,0 +1,9 @@
+This version of Social Match comes with some bugs fixes
+for update from SM 3.0 to Social Match 3.1 if you are new client just make a clean install and not need to update it
+- upload the files inside the update folder to your main folder where the script is installed
+- Run fix.sql into your social match database
+
+Changelog:
+
+Fixed email recover function
+Fixed UTF-8 bug in emails 

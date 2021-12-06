@@ -1,0 +1,200 @@
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Payment settings
+          </h1>
+        </section>
+		<script>aurl = 'payment';</script>
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-primary">
+				  <div style="position:absolute;width:100px;right:10px;top:15px;">
+					<img src="https://stripe.com/img/about/logos/logos/black.png" width="100px"/>
+				  </div>			  
+                <div class="box-header">
+                  <h3 class="box-title">Stripe Settings</h3>
+				  <p style="color:#999">Leave this field empty for hide this payment option from the script</p>		
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" action="#" id="stripe-settings">
+				<input type="hidden" value="stripe" name="action" />				
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Stripe Live/Test Secret Key</label>
+					  <input class="form-control" value="<?= siteConfig('stripe_secret'); ?>" name="site_stripe_secret" />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Stripe Live/Test Publishable Key</label>
+					  <input class="form-control" value="<?= siteConfig('stripe_pub'); ?>" name="site_stripe_pub" />
+                    </div>					
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update Stripe</button>
+                    <a href="http://premiumdatingscript.com/documentation" target="_blank" class="btn btn-info">Tutorial Stripe </a>					
+                  </div>
+                </form>
+              </div><!-- /.box -->
+			</div>		  
+            <div class="col-md-6">			
+              <!-- general form elements -->
+              <div class="box box-primary">
+				  <div style="position:absolute;width:100px;right:10px;top:5px;">
+					<img src="<?php echo $sm['config']['theme_url']; ?>/images/paypal-logo.png" width="100px"/>
+				  </div>			  
+                <div class="box-header">	
+                  <h3 class="box-title">PayPal Settings</h3>
+				  <p style="color:#999">Leave this field empty for hide this payment option from the script</p>				  
+                </div><!-- /.box-header -->
+                <!-- form start -->
+				
+                <form role="form" action="#" id="paypal-settings">
+				<input type="hidden" value="paypal" name="action" />
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">PayPal ID or PayPal Email for receive payments</label>
+					  <input class="form-control" value="<?= $sm['config']['paypal']; ?>" name="site_paypal" />
+                    </div>					
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update PayPal </button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+              <div class="box box-primary">
+				  <div style="position:absolute;width:100px;right:10px;top:15px;">
+					<img src="https://careers.fortumo.com/wp-content/themes/42mo-careers/images/image-1200x650.png" width="100px"/>
+				  </div>			  
+                <div class="box-header">
+                  <h3 class="box-title">Fortumo Settings</h3>
+				  <p style="color:#999">Leave this field empty for hide this payment option from the script</p>		
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" action="#" id="fortumo-settings">
+				<input type="hidden" value="fortumo" name="action" />				
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Fortumo Service ID</label>
+					  <input class="form-control" value="<?= siteConfig('fortumo_service'); ?>" name="site_fortumo_service" />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Fortumo Secret </label>
+					  <input class="form-control" value="<?= siteConfig('fortumo_secret'); ?>" name="site_fortumo_secret" />
+                    </div>					
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update Fortumo</button>
+                    <a href="http://premiumdatingscript.com/documentation" target="_blank" class="btn btn-info">Tutorial Fortumo </a>					
+                  </div>
+                </form>
+              </div><!-- /.box -->
+			</div>
+			 <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-primary">
+				  <div style="position:absolute;width:100px;right:10px;top:5px;">
+					<img src="<?php echo $sm['config']['theme_url']; ?>/images/paygol-logo.png" width="100px"/>
+				  </div>				  
+                <div class="box-header">
+                  <h3 class="box-title">PayGol Settings [SMS PAYMENTS]</h3>
+				  <p style="color:#999">Leave this field empty for hide this payment option from the script</p>		
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" action="#" id="paygol-settings">
+				<input type="hidden" value="paygol" name="action" />				
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">PayGol Service ID</label>
+					  <input class="form-control" value="<?= $sm['config']['paygol']; ?>" name="site_paygol" />
+                    </div>					
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update PayGol </button>
+                    <a href="http://premiumdatingscript.com/documentation" target="_blank" class="btn btn-info">Tutorial PayGol </a>					
+                  </div>
+                </form>
+              </div><!-- /.box -->
+			</div>			
+		</div>	
+		
+		
+          <div class="row">
+		  
+            <div class="col-md-4">
+              <!-- general form elements -->
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Credits Functions Price</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" action="#" id="price-settings">
+				<input type="hidden" value="prices" name="action" />						
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Price in credits for unblock Private photos</label>
+					  <input class="form-control" value="<?= $sm['price']['private']; ?>" name="site_price_private" />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Price in credits for add photo to the Spotlight</label>
+					  <input class="form-control" value="<?= $sm['price']['spotlight']; ?>" name="site_price_spotlight" />
+                    </div>	
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Price in credits for buy <?= $sm['basic']['chat']; ?> more daily chat</label>
+					  <input class="form-control" value="<?= $sm['price']['chat']; ?>" name="site_price_chat" />
+                    </div>						
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update prices </button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+			</div>			  
+            <div class="col-md-4">
+              <!-- general form elements -->
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Buy Credits Price</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" action="#" id="credits-settings">
+				<input type="hidden" value="credits" name="action" />					
+                  <div class="box-body">
+					<?= getAdminCreditsPackages(); ?>
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update credits </button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+			</div>
+            <div class="col-md-4">
+              <!-- general form elements -->
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Premium Account Price</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" action="#" id="premium-settings">
+				<input type="hidden" value="premium" name="action" />
+                  <div class="box-body">
+					<?= getAdminPremiumPackages(); ?>
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update premium </button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+			</div>
+		
+		</div>			
+		</div>			
+	</section>
+</div>	

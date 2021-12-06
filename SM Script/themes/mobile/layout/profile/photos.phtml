@@ -1,0 +1,40 @@
+			<script>
+			url = "mobile_photos";
+			document.getElementById("navbar-title").innerHTML='<?= $sm['lang'][284]['text']; ?>';
+			document.getElementById("add-photos-mobile").style.display = "block";					
+			</script>             
+         <div class="w-tabs" data-duration-in="400" data-duration-out="400" data-easing="ease-out-quint">
+          <div class="w-tab-menu top-buttons">
+            <a class="w-tab-link w--current w-inline-block toolbar-top-button" data-w-tab="Tab 1">
+              <div><?= $sm['lang'][280]['text']; ?></div>
+            </a>
+            <a class="w-tab-link w-inline-block toolbar-top-button" data-w-tab="Tab 2">
+              <div><?= $sm['lang'][281]['text']; ?></div>
+            </a>
+          </div>
+          <div class="w-tab-content tabs-content" style="background:#fff">
+            <div class="w-tab-pane w--tab-active w-clearfix tab-pane" data-w-tab="Tab 1">
+			
+			<?= getUserPublicPhotosMobile($sm['user']['id']); ?>
+			  
+            </div>
+            <div class="w-tab-pane tab-pane" data-w-tab="Tab 2">
+			<?= getUserPrivatePhotosMobile($sm['user']['id']); ?>	
+            </div>
+          </div>
+        </div>
+
+		<div class="add-photo">
+			<div class="add-photo__choose">
+				<div class="btn" style="background:#28577f" id="insta-import">
+					<?= $sm['lang'][282]['text']; ?> Instagram
+				</div>			
+				<div class="btn" id="add-photos">
+					<?= $sm['lang'][283]['text']; ?> <?= $sm['lang'][280]['text']; ?>
+				</div>
+				<div class="btn" id="private-photos">
+					<?= $sm['lang'][283]['text']; ?> <?= $sm['lang'][281]['text']; ?>
+				</div>
+			</div>
+		</div>	
+	

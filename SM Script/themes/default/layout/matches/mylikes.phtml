@@ -1,0 +1,25 @@
+			<script>
+			url = "mylikes";
+			</script>            
+			<div class="col s7 real" id="site-content">              
+                <div class="profile-menu ">
+                    <ul>
+						<a href="<?= $sm['config']['site_url']; ?>matches">
+                        <li  >
+                            <?= $sm['lang'][105]['text']; ?>
+                        </li>
+						</a>
+                        <a href="<?= $sm['config']['site_url']; ?>mylikes">
+						<li class="selected">
+                            <?= $sm['lang'][295]['text']; ?> <3
+                        </li> 
+						</a>
+                    </ul>
+                </div>
+				
+                <div class="wall" > 
+					<?= myLikes(); ?>
+                </div>
+
+        
+            </div> 

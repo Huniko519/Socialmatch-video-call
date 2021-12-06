@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>Documentation for Social Match by Premium Dating Script</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="files/favicon.png">
+
+  <script>
+    var browser=navigator.userAgent;var browserRegex=/(Android|BlackBerry|IEMobile|Nokia|iP(ad|hone|od)|Opera M(obi|ini))/;var isMobile=false;if(browser.match(browserRegex)){isMobile=true;addEventListener("load",function(){setTimeout(hideURLbar,0);},false);function hideURLbar(){window.scrollTo(0,1);}}
+  </script>
+
+    <!-- jQuery library -->
+  <script src="files/jquery.min.js"></script>
+  <!-- highlight -->
+  <script src="files/jquery.sticky.js"></script>
+  <!-- Anchorific -->
+  <script src="files/anchorific.min.js"></script>
+  <!-- highlight.js -->
+  <script src="files/highlight.pack.js"></script>
+
+  <!-- CSS -->  
+  <style>
+  @charset "UTF-8";
+  @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900&subset=latin,latin-ext);
+  @import url(http://fonts.googleapis.com/css?family=PT+Mono);
+  @import url(files/chop.css);
+  @import url(files/style.css);
+  @import url(files/vs.css);
+  </style>
+</head>
+<body>
+<h1 class="hide">Begin</h1>
+
+<div class="gototop">Go to top</div>
+
+
+<div class="container clearfix">
+
+  <!-- SIDEBAR -->
+  <aside>
+    <nav class="anchorific"></nav>
+  </aside>
+  <!-- /SIDEBAR -->
+
+  <!-- CONTENT -->
+  <div class="content">
+    <!-- SUBHEADER -->
+    <div class="subheader clearfix">
+      <a href="http://codecanyon.net/user/Xohan" class="item-thumbnail-link">
+      	<img class="item-thumbnail" src="files/item-thumbnail.png" alt="" title="">
+      </a>
+      <p class="item-name">Social Match</p>
+      <p class="item-type">Premium Dating Script</p>
+      <p class="item-version">ver. 3.1 @ 10 Aug 2016</p>
+    </div>
+    <!-- /SUBHEADER -->
+
+    <h1>Introduction</h1>
+    <p>Howdy fellow Customer!</p>
+    <p>At first, we would like to thank you for choosing our script. We have prepared an user-friendly documentation especially for you, to help you quickly install Social Match Script.<br>We hope that work with our script won't bring you difficulties and it will be an easy task.</p>
+    <p>We've done our best in making Social Match and hopefully you will love it as much as we do. Your opinion is very important for us and we will appreciate if you can rate and review Social Match on CodeCanyon (please check details how you can do it in <a href="#faq">FAQ</a> section).</p>
+    <p class="info">Remember to always check the latest changes in our <a href="https://premiumdatingscript.com" target="_blank">main site</a>.</p>
+    
+    <h1>Preparation</h1>
+    <p>Make sure your hosting have the following:</p>
+    
+    <ul>
+      <li><strong>PHP 5.x</strong></li>
+      <li><strong>MySQLi Extension</strong></li>
+    </ul>    
+	<p>If you dont own a hosting yet, i fully recommend <a href="http://www.site5.com/in.php?id=223667" target="_blank">Site5</a> 	    <br>With <a href="http://www.site5.com/in.php?id=223667" target="_blank">Site5</a>  and Social Match you will not have troubles of any kind.</p>
+    
+    <h1>Installation</h1>
+    <p>After downloading and extracting the zip package you will find folders and files.</p>
+    <p>In order to start working with our script, please follow these steps to setup Social Match:</p>   
+    <ul>
+        <li>
+            Create a database with your Hosting Cpanel for import the Social Match tables
+            <br><img src="files/create.jpg"/><br><br>
+        </li>    
+        <li>
+            Select your database and import <strong>sql.SQL</strong> file from <strong>MySQL File</strong> folder into your MySQL database using the import function available in MySQL phpMyadmin.<br>Here's a preview of what your MySQL phpMyAdmin might look like:
+            <br><img src="files/import.jpg"/><br><br>
+        </li>
+        <li>
+            Using a text editor, open the files <strong>'config.php'</strong> located inside the <strong>"SM Script/assets/includes/"</strong> folder, in config.php replace what's between the brackets( ' ' ) with your MySQL settings. Here's a preview of the content of 'config.php':
+            <br>
+            <img src="files/config.jpg"/>
+			<p class="info">If your domain is SSL protected remember to put <strong>HTTPS://</strong> in <strong>$site_url</strong> variable</p    
+      </li><br>	  
+        <li>Upload the files from the <strong>"SM Script"</strong> folder on the FTP server (usually <strong>public_html</strong> folder when installing it on a domain)</li><br>
+        <li>Set the <strong>CHMOD</strong> to 777 or 775 (depending on the server configuration) to the folder <strong>'uploads'</strong> located in <strong>'assets/sources/'</strong></li>
+    </ul> 
+    
+    <h2>Google Maps API JavaScript</h2>
+    <p class="warning">This step is important if you dont do this, visitors will not be able to create new accounts</p>
+    <ul>
+        <li>
+            Go to your site and login with the default admin account<br>
+            <p class="info">
+              Login:	<strong>admin@sm.com</strong><br>
+              Password:	<strong>sm2016</strong>
+            </p>
+        </li>
+        <li>
+            Go to <strong>General settings</strong> and click in <strong>GET API KEY</strong> button
+            <br>
+            <img src="files/googlemaps.jpg"/>
+            <br>  
+        </li>      
+	    <li>Create or select a project.</li>
+	    <li>Click Continue to enable the API and any related services.</li>
+	    <li>On the Credentials page, get a Browser key (and set the API Credentials).<br>
+Note: If you have an existing Browser key, you may use that key.
+        <br>
+        <img src="files/googlemaps2.jpg"/>
+        <br>       
+        </li>
+        <li>
+            <p>Paste the <strong>Key</strong> and click in <strong>Add Google Map Key</strong></p>   
+            <br>
+            <img src="files/googlemaps3.jpg"/>
+            <br>
+        </li>      
+    </ul>                        
+    
+    <h2>Videocall Server</h2>
+    <p>For make the videocalls your site needs a <strong>peerjs server</strong>, you can easly run your own hosted in <strong>Heroku for free</strong>
+Deploy the server to Heroku clicking in the image bellow</p>
+    <a href="https://www.heroku.com/deploy/?template=https://github.com/peers/peerjs-server" target="_blank">
+    <img src="files/deploy.png"></a><br><br>
+    Now, if you already have an Heroku account login, if you dont create a new account<br>
+        <br><img src="files/h1.jpg"/><br><br>
+        After you create and verify your account, you will see this.<br>
+        <br><img src="files/h2.jpg"/><br><br>            
+        <b>App name:</b> <span style="font-style:italic">Your app name</span><br>
+        <b>Region:</b> <span style="font-style:italic">Choose the best option for your site</span><br>
+        Fill that information and click in Deploy for free, and then wait until Heroku deploys the server<br>
+        When the server is ready , you will see this message<br>"Your app was successfully deployed. View it, or make your first edit."<br>
+        Click in <b>View it</b> and that will be your videocall server domain.<br>
+        Now go to the admin panel (http://your-site.com/admin) and configure your Videcall server in <strong>General Settings</strong><br><br>
+        <b>Add your videocall server without the "https://"</b><br>    
+    	<img src="files/videocall.jpg"/>
+        <p class="info">Leave the field blank for remove the videocall function</p>
+        <p class="warning">If your domain is not SSL certified (not https) the videocall will not work on Chrome</p>
+	    
+    <h1>Amazon AWS S3 Storage</h1>
+    <p>Reduce your hosting load with this awesome feature<br>directly send the uploaded photos to your <strong>Amazon S3</strong></p>
+    <p class="info"> If you dont know what is Amazon AWS S3 check it out<a href="https://aws.amazon.com/s3/?nc1=h_ls" target="_blank">here</a>
+    <ul>
+    	<li>First of all we need a <strong>Amazon S3 bucket</strong>, if you already have one skip this step if you dont create a new s3 bucket 
+        go to <a href="https://console.aws.amazon.com/s3/home" target="_blank">this link</a> and click in <strong>Create bucket</strong> <br>
+        </li>
+    	<li>Now we need the credentials go to <a href="https://console.aws.amazon.com/iam/home?#security_credential" target="_blank">Amazon Security and credentials</a></li>
+    	<li>Click in <strong>Access Keys (Access Key ID and Secret Access Key)</strong> and then in <strong>Create new access key</strong><br>
+        	<img src="files/amazon.jpg">
+        </li>
+    	<li>Now you have all the required data<br>
+		go to the admin panel/general settings and add the information<br>
+		<img src="files/amazon2.jpg"><br>
+        <p class="info">Leave all the fields empty to use regular upload system to your hosting</p>
+        </li>
+    </ul>                    
+    
+    <h1>Payments Settings</h1>
+    <p>Go to payments settings in the admin panel for configure all the payments options</p>
+    <h2>Paypal</h2>
+    <p>Add your PayPal ID or PayPal Email for receive payments</p>
+     <img src="files/paypal.jpg">
+    <p class="info">Leave this field empty for disable this payment method</p>
+    
+    <h2>Stripe</h2>
+    <p>You need to add your <strong>Stripe Secret Key</strong> and <strong>Stripe Publishable Key</strong><br>
+    Go to your <a href="https://dashboard.stripe.com/login" target="_blank">Stripe dashboard</a> and click in <strong>Accounts Settings / API Keys</strong></p>
+     <img src="files/stripe2.jpg"><br>
+    <p>Now go to the admin panel and add the information, use the <strong>live keys</strong></p>
+    <img src="files/stripe.jpg"><br>
+    <p class="info">Leave the fields empty for disable this payment method</p>
+    
+    <h2>Fortumo SMS Payment</h2>
+     <p>Go to <a href="https://dashboard.fortumo.com/">Fortumo Dashboard</a> and click in <strong>Create service</strong><br>
+and then select the option <strong>Cross-Platform Mobile Payments</strong></p>
+     <img src="files/fortumo2.jpg">
+     <p>Now just fill all the fields and move to the next page</p>
+     <p>In the last step there is a field called <strong>To which URL will your payment requests be forwarded to?</strong> there you must add a link like this one http://<code>yourpage.com</code><strong>/assets/sources/fortumo.php</strong> <br>
+	 <img src="files/fortumo3.jpg"><br>
+     For my demo site i had to put there <strong>https://<code>www.premiumdatingscript.com/smdemo</code>/assets/sources/fortumo.php</strong></p>
+     <p>Then click in <strong>next</strong> and confirm the countries terms of use and them click in <strong>confirm</strong></p>
+     <p>You will be redirected to the setup page of your service, click in general and there will your service id and key information</p>
+	 <img src="files/fortumo4.jpg">     
+     <p>Now you can add your <strong>Fortumo Service ID</strong> and <strong>Fortumo Service Secret</strong> in the admin panel</p>
+    <img src="files/fortumo.jpg"><br>
+    <p class="info">Leave the fields empty for disable this payment method</p>
+    
+    <h2>PayGol</h2>
+	<p>Now you will never lose a client, accept SMS payment for dating site is just the best of the best, <br>you can withdraw your earrings to <b>Skrill</b> and <b>Bank wire</b><br>
+    Lets crete a PayGol app<br>
+    <b>Step 1</b> - go to <a href="http://www.paygol.com/register?affiliatecode=FCVS-DB5R-FRKO-EISI" target="_blank">PayGol Register</a> create your account and login to PayGol</b>          
+    <br><img src="files/p1.jpg"/><br><br>
+    <b>Step 2</b> - For create your Service Id click here <a href="https://www.paygol.com/webapps/" target="_blank">https://www.paygol.com/webapps</a>
+    <br><img src="files/p2.jpg"/><br>
+    <ul>
+        <li>Fill the field <b>Name of service</b></li>
+        <li>Also fill the field <b>Mail report</b> (it will notify you by email when someone pays with SMS)</li>
+        <li>And for the last one and the most important fill in the field <b>url of Proccess IPN</b><br>
+            Here you have to add your site domain + <b>/assets/sources/smsipn.php</b> <br>
+            for example i have it like this for the demo <b>https://www.premiumdatingscript.com/smdemo/assets/sources/smsipn.php</b></li>
+        <li>The <b>price</b> and the <b>currency</b> you manage it from the <b>Admin Panel</b> of <b>Social Match</b></li>
+        <li>Now go to the bottom of the page and click in <b>Save</b></li>
+    </ul>
+    <b>Step 3</b> - After you save your webservice , you will be redirected to your services ,look for the new service and get the <b>ID</b>
+    <br><img src="files/p3.jpg"/><br>
+   Now go to the admin panel and configure your PayGol SMS
+    <br><img src="files/p4.jpg"/><br><br>    
+    
+    <h1>Social Connect Settings</h1>
+    <p>Go to <strong>general settings</strong> in the admin panel for configure all the social connect options</p>
+    <h2>Facebook Connect</h2>
+    <p>Ok, lets create a Facebook app<br>
+    <b>Step 1</b> - go to <a href="https://developers.facebook.com/apps/" target="_blank">Facebook developers</a> and click in <b>Add a New App</b>
+    <ol>
+        <li>Choose <b>Website</b></li>
+        <li>Choose Name for you App and Click Create New Facebook App ID </li>
+        <li>Choose a category for you App and click Create App ID </li>
+        <li>Now Click Skip Quick Test </li>
+    </ol>            
+    <br><img src="files/f1.png"/><br><br>
+    <b>Step 2</b> - Under settings, Provide values for <b>App domain</b> ( Eg:www.yoursite.com ) and <b>Contact Email</b> and click <b>Add Platform</b>.
+    Now you have to fill the form.
+    <br><img src="files/f2.png"/><br><br>
+    Provide Values for <b>Site URL (Required)</b> and Mobile site URl ( Optional )
+    <br><img src="files/f3.png"/><br><br>
+    <b>Step 3</b> - Now under <b>Status & Review</b>, Click the button to make you App live .		
+    <br><img src="files/f4.png"/><br><br>
+    <b>Step 4</b> - Go back to <b>Settings</b> and there is your <b>APP KEY</b> and <b>APP SECRET</b>.
+    <br><br>			
+    Now go to the Admin panel/General Settings and configure your <strong>FACEBOOK CONNECT</strong>   
+    <p class="info">Leave the fields empty for disable facebook connect method</p>
+    
+    <h2>Twitter Connect</h2>
+	<p><b>Step 1</b> - Go to <a href="https://apps.twitter.com/" target="_blank">Twitter apps</a> and click in <b>Create New App</b><br>
+    <strong>Step 2</strong> - Fill all the fields and in <strong>Callback url</strong> you have to add your site domain + <b>/assets/sources/twittercallback.php</b> for example put this for the demo <b>https://<code>www.premiumdatingscript.com/smdemo</code>/assets/sources/twittercallback.php</b><br>
+    <strong>Step 3</strong> - Click in <strong>Key and access token</strong> and there is your information
+    <br><img src="files/twitter.jpg"/><br><br>
+     Now go to the Admin panel/General Settings and configure your <strong>Twitter CONNECT</strong></p>
+    <p class="info">Leave the fields empty for disable twitter connect method</p>
+        
+    <h2>Google connect</h2>
+    <p>Before you can integrate Google Sign-In into your website, you must have a Google API Console project. In the project, you create a client ID, which you need to call the sign-in API.<br><br>
+To create a Google API Console project and client ID, follow these steps:</p>
+    <p><strong>Step 1</strong> - Go to <a href="https://console.developers.google.com/project/_/apiui/apis/library" target="_blank">Google API Console</a><br>
+    <strong>Step 2</strong> - From the project drop-down, select an existing project<br>or create a new one by selecting <strong>Create a new project</strong>.<br>
+    <strong>Step 3</strong> - In the sidebar under "API Manager", select <strong>Credentials</strong>,<br>then select the <strong>OAuth consent screen</strong> tab.<br>
+	<strong>Step 4</strong> - In the <strong>Credentials tab</strong>, select the <strong>New credentials</strong> drop-down list,<br>and choose <strong>OAuth client ID</strong>. <br>
+    <strong>Step 5</strong> - From the resulting <strong>OAuth client dialog box</strong>, copy the <strong>Client ID</strong> and <strong>Secret Key</strong>.<br>
+       Now go to the Admin panel/General Settings and configure your <strong>Google CONNECT</strong></p>
+       <p class="info">Leave the fields empty for disable Google connect method</p>
+    
+    <h2>Instagram Connect</h2>
+
+    <p><strong>Step 1</strong> - Go to <a href="https://www.instagram.com/developer/clients/manage/" target="_blank">Instagram developers dashboard</a> and click in <strong>Register New Client</strong><br> 
+    <strong>Step 2</strong> - Fill all the fields and in <strong>Valid redirect URIs:</strong> you have to add your site domain + <b>/assets/sources/instagram.php</b> for example i put this for my demo site <b>https://<code>www.premiumdatingscript.com/smdemo</code>/assets/sources/instagram.php</b><br>
+    <strong>Step 3</strong> - Click in <strong>Register</strong> and then you will find the <strong></strong> and the <strong>Client Key</strong>
+      Now go to the Admin panel/General Settings and configure your <strong>Instagram CONNECT</strong></p>
+      <p class="warning">Instagram by default creates the app in sandbox mode (only the admin and test users), you have to Start a submission in order to make the instagram connect public to all</p>  
+      <p class="info">Leave the fields empty for disable Instagram connect method</p> 
+    <h1>Support</h1>
+    <p>We’re truly appreciate that you've chosen our item(s). Customer satisfaction is our priority and we understand that sometimes you need help. We provide friendly and helpful support for all our items.</p>
+    <p>You can reach us using our ticket system - please go to <a href="https://pds.ticksy.com" target="_blank">PDS Support Center</a>.<br>Support for our customers is provided on business days: <strong>Mon-Fri 10:00am-6:00pm (GMT +3)</strong>. Standard reply time is within 24-48 hours.</p>
+    <p>Don't hesitate to ask, we are here to help you!</p>
+    
+    <h1>FAQ</h1>
+    <p><strong>Q: How can I rate your item?</strong><br>
+      A: Click on <a href="http://codecanyon.net/downloads" target="_blank">Downloads</a> tab in your CodeCanyon profile page. There you will be able to rate our item. If you want to rate our item with 4 or less stars, please let us know why you do this. We just want to know about your opinion. This will help us to improve our items in future.</p>
+    <p><strong>Q: How can i enter into the admin panel?</strong><br>
+      A: After you finish the installation of the script,<br>go to your site and login with the default admin account<br>
+        Login:		<strong>admin@sm.com</strong><br>
+        Password:	<strong>sm2016</strong></p>
+    <p><strong>Q: I have problems/questions related to the script, how can I contact you?</strong><br>
+      A: You can live chat with us 24/7 on our main site <a href="https://premiumdatingscript.com">Premium Dating Script</a></p>
+
+    <h1>Changelog - ver. 3.0</h1>
+    <p></p>
+    <ul class="changelog">
+      <li><strong>ver. 3.0</strong> (10.08.2016)
+        <ul>
+          <li>Added multilanguage support to Email notifications</li>
+          <li>Added auto set visitor language by location and avaliable languages</li>
+          <li>Added plugin for upload the photos to Amazon S3 bucket</li>
+          <li>Added Fortumo Payment for SMS</li>
+          <li>Added Stripe Payment for credit cards</li>                              
+          <li>Added connect with Twitter</li>
+          <li>Added connect with Google</li>
+          <li>Added connect with Instagram</li>
+          <li>Added give free premium days to users from the admin panel</li>
+          <li>Added SMTP email test function for check if its working fine</li>
+          <li>Added option for enable/disable languages</li>
+          <li>Added user interests</li>
+          <li>Added users extended information for more complete profile</li>
+          <li>Added show days left for premium users</li>
+          <li>Added sound for videocall on call and on incoming call</li>
+          <li>Improved videocall system</li>
+          <li>Fixed discover game bug</li>
+          <li>Fixed long terms and privacy text bug</li>
+          <li>Fixed Google geolocation api bug</li>
+          <li>Fixed name in photo comments link bug</li>
+          <li>Fixed emoji repeat message bug</li>
+          <li>Fixed design bug when someone tries to see a profile without account</li>
+          <li>Fixed delete photo animation</li>
+          <li>Fixed premium users daily chat limit</li> 
+          <li>Fixed error messages when someone tries to register or login</li>
+          <li>Fixed // url bug</li> 
+          <li>Fixed city short name , now it shows the long name</li>
+          <li>Fixed multilanguage system, now 100% of the script is multilanguage</li> 
+          <li>Fixed some CSS bugs</li>
+          <li>Fixed recover password , now its SMTP based</li>                                       
+        </ul>
+      </li>
+    </ul>
+    
+  </div>
+
+</div>
+
+
+  <script>
+  $('body').anchorific({navigation:'nav',speed:1000,anchorClass:'anchor',anchorText:'',top:false,spy:true,position:'append',spyOffset: 50});$(document).ready(function(){$("nav").sticky({topSpacing:50});});var lastId,topMenu=$("nav"),topMenuHeight=topMenu.outerHeight(),menuItems=topMenu.find("a"),scrollItems=menuItems.map(function(){var item=$($(this).attr("href"));if(item.length){return item;}});menuItems.click(function(e){var href=$(this).attr("href"),offsetTop=href==="#"?0:$(href).offset().top+1;$('html, body').stop().animate({scrollTop:offsetTop},300);e.preventDefault();});
+  // go to top
+  $(window).scroll(function(){if($(document).scrollTop()>175){$(".gototop").fadeIn(500)}else $(".gototop").fadeOut(500)});$(".gototop").click(function(){$("html,body").animate({scrollTop:0},"slow");return false})
+  // highlight.js
+  $('pre').each(function(i, e) {hljs.highlightBlock(e)});
+  hljs.configure({tabReplace: '    '});
+    hljs.initHighlightingOnLoad();
+  </script>
+</body>
+</html>

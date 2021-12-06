@@ -1,0 +1,83 @@
+<?php 
+if($_GET['id'] != NULL ){
+	$usid = secureEncode($_GET['id']);	
+	getUserInfo($usid,1);
+
+}
+
+$profile_info = json_encode($sm['profile']);
+$status = userStatusIcon($sm['profile']['id']);
+echo 
+'<script>
+current_user_id = ' . $sm['profile']['id'] .';
+var profile_info = '. $profile_info  . ';	
+	
+url = "chat";
+document.getElementById("send-photo").style.display = "block";
+document.getElementById("chat_back").style.display = "block";
+document.getElementById("videocall").style.display = "block";
+document.getElementById("menu-button").style.display = "none";
+</script>';
+?>
+<script>
+document.getElementById("navbar-title").innerHTML='<a href="mobile.php?page=profile&id='+profile_info.id+'">'+ profile_info.first_name +' <?=$status;?> </a>';
+</script>
+<ul class="list list-chats" >
+
+<?= getChatMobile($sm['user']['id'],$sm['profile']['id']); ?>
+
+</ul>
+<div id="bottom"></div>
+      <div class="input-chat-block">
+        <div class="w-form">
+		<form class="w-clearfix" id="c-send" action="#">
+			<input class="w-input input-chat" id="chat-message" autocomplete="off" placeholder="<?= $sm['lang'][89]['text']; ?>"  >
+			<input id="r_id" type="hidden" style='display:none'>
+            <button id="chat-send" class="w-button chat-button" type="submit" data-wait="Please wait..." style="font-size:30px;">
+				<i class="mdi-content-send"></i>
+			</button>	
+		</form>
+		<form action="<?php echo $sm['config']['site_url']; ?>/assets/sources/sendphotoMobile.php" method="post" enctype="multipart/form-data" id="sendPhoto">
+			<input name="image_file" id="photo-to-send" type="file"  style="display:none;"/>
+			<input id="rid" name="rid" type="hidden" style='display:none'>
+		</form>			
+        </div>
+      </div>
+	<div class="wdt-emoji-popup">
+		<a href="#" class="wdt-emoji-popup-mobile-closer"> &times; </a>
+		<div class="wdt-emoji-menu-content">
+			<div id="wdt-emoji-menu-header">
+				<a class="wdt-emoji-tab active" data-group-name="People"></a>
+				<a class="wdt-emoji-tab" data-group-name="Nature"></a>
+				<a class="wdt-emoji-tab" data-group-name="Foods"></a>
+				<a class="wdt-emoji-tab" data-group-name="Activity"></a>
+				<a class="wdt-emoji-tab" data-group-name="Places"></a>
+				<a class="wdt-emoji-tab" data-group-name="Objects"></a>
+				<a class="wdt-emoji-tab" data-group-name="Symbols"></a>
+				<a class="wdt-emoji-tab" data-group-name="Flags"></a>
+				<a class="wdt-emoji-tab" data-group-name="Custom"></a>
+			</div>
+			<div class="wdt-emoji-scroll-wrapper">
+				<div id="wdt-emoji-menu-items">
+					
+					<h3 id="wdt-emoji-search-result-title">Search Results</h3>
+					<div class="wdt-emoji-sections"></div>
+					<div id="wdt-emoji-no-result">No emoji found</div>
+				</div>
+			</div>
+			<div id="wdt-emoji-footer">
+				<div id="wdt-emoji-preview">
+					<span id="wdt-emoji-preview-img"></span>
+					<div id="wdt-emoji-preview-text">
+						<span id="wdt-emoji-preview-name"></span><br>
+						<span id="wdt-emoji-preview-aliases"></span>
+					</div>
+				</div>
+
+				<div id="wdt-emoji-preview-bundle">
+					<span></span>
+				</div>
+			</div>
+		</div>
+	</div>	  
+	  

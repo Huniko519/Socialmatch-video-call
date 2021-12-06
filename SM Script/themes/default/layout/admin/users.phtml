@@ -1,0 +1,59 @@
+	<?
+	$f = secureEncode($_GET['f']);
+	$o = secureEncode($_GET['o']);
+	$d = 0;
+	if($_GET['x'] != ''){
+		$x = secureEncode($_GET['x']);
+		$d = $x * 50; 
+	}	
+	?>
+	  <script>aurl = 'users';</script>	
+      <div class="content-wrapper">
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">Manage Users</h3>
+                  <div class="box-tools">
+                    <div class="input-group">
+                      <input type="text" id="searchUser" name="table_search" class="form-control input-sm pull-right" style="width: 450px;" placeholder="Search by name or id or email"/>
+                      <div class="input-group-btn">
+                        <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                  <table class="table table-hover" id="userslist">
+                    <tr>
+                      <th></th>						
+                      <th><a href="index.php?page=admin&p=users&f=<?= $f; ?>&o=id&x=<?= $d; ?>">ID</a></th>				  
+                      <th>User</th>				  
+                      <th>Email</th>
+                      <th>City</th>
+                      <th>Country</th>
+                      <th><a href="index.php?page=admin&p=users&f=<?= $f; ?>&o=credits&x=<?= $d; ?>">Credits</a></th>	
+                      <th>Total photos</th>
+                      <th>Join date</th>
+                      <th></th>						  
+                    </tr>
+					<? echo getAdminUsers($f,$o,$d); ?>
+                  </table>
+                </div><!-- /.box-body -->
+                <div class="box-footer clearfix">
+                  <ul class="pagination pagination-sm no-margin pull-right">
+					<? if($d > 0){ ?>
+                    <li><a href="index.php?page=admin&p=users&f=<?= $f; ?>&o=<?= $o; ?>&x=<?= $x-1;?>">Previous page (<?= $x-1;?>)</a></li>
+                    <li><a href="index.php?page=admin&p=users&f=<?= $f; ?>&o=<?= $o; ?>&x=<?= $x+1;?>">Next page (<?= $x+1;?>)</a></li>				
+					<? } else { ?>
+				    <li><a href="index.php?page=admin&p=users&f=<?= $f; ?>&o=<?= $o; ?>&x=1">Next page</a></li>		
+					<? } ?>
+
+                  </ul>
+                </div>
+              </div><!-- /.box -->
+            </div>
+          </div>
+	</section>
+</div>	

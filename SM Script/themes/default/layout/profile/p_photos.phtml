@@ -1,0 +1,50 @@
+            <div class="col s7 real">			
+                <div class="profile-menu center-align ">
+                    <ul>					
+                        <li  data-url="about"  data-uid="<?= $sm['profile']['id']; ?>">
+                            <?= $sm['lang'][117]['text']; ?><?= $sm['profile']['first_name']; ?>
+                        </li>
+                        <li>
+                            <b><?= $sm['profile']['total_likers']; ?></b> <?=$sm['lang'][278]['text'];?>
+                        </li>						
+						<? if($sm['profile']['total_photos_public'] > 0){ ?>
+                        <li data-url="photos" data-uid="<?= $sm['profile']['id']; ?>">
+                            <b><?= $sm['profile']['total_photos_public']; ?></b> <?= $sm['lang'][67]['text']; ?>
+                        </li>
+						<? } else { ?>
+                        <li>
+                            <b>0</b> <?= $sm['lang'][67]['text']; ?>
+                        </li>
+						<? } ?>
+						
+						<? if($sm['profile']['total_photos_private'] > 0){ ?>
+                        <li class="selected" data-url="p_photos"  data-uid="<?= $sm['profile']['id']; ?>">
+                            <b><?= $sm['profile']['total_photos_private']; ?></b> <?= $sm['lang'][68]['text']; ?>
+                        </li>   
+						<? } else { ?>
+                        <li>
+                            <b>0</b> <?= $sm['lang'][68]['text']; ?>
+                        </li>
+						<? } ?>	
+                    </ul>
+                </div>
+                
+                <div class="profile-content-photos">
+                    <div class="photos left-algin">
+						<?= getUserPrivatePhotos($sm['user']['id'],$sm['profile']['id']); ?>
+						<? $view = unblockedUser($sm['user']['id'],$sm['profile']['id']);
+							if($view == 0){ ?>
+								<div style="position:fixed;bottom:5%;left:22%;">
+									<a id="ask-permission" class="waves-effect waves-light btn-large blue lighten-1">
+										<i class="mdi-communication-chat left"></i><?= $sm['lang'][125]['text']; ?> <?= $sm['profile']['first_name']; ?>
+									</a>
+								</div>
+								<div style="position:fixed;bottom:5%;left:46%;">
+									<a id="buy-permission" class="waves-effect waves-light btn-large light-green darken-2">
+										<i class="mdi-maps-local-atm left"></i><?= $sm['lang'][126]['text']; ?>
+									</a>
+								</div>	
+							<? } ?>						
+                    </div>
+                </div>
+            </div> 

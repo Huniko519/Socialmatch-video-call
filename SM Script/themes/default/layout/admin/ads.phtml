@@ -1,0 +1,57 @@
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Advertise settings
+          </h1>
+        </section>
+		<script>aurl = 'ads';</script>
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Landing page banner 970x90</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" action="#" id="site-ads1">
+				<input type="hidden" value="ads1" name="action" />				
+                  <div class="box-body">
+                    <div class="form-group">
+					  <textarea class="form-control" rows="10" name="site_ads" ><?= siteConfig('ads'); ?></textarea>
+                    </div>						
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update this ad </button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+			</div>
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Front end user right banner and mobile 250x250</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" action="#" id="site-ads2">
+				<input type="hidden" value="ads2" name="action" />				
+                  <div class="box-body">
+                    <div class="form-group">
+					  <textarea class="form-control" rows="10" name="site_ads" ><?= siteConfig('ads2'); ?></textarea>
+                    </div>						
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update this ad </button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+			</div>			
+		</div>	
+		
+		
+	</section>
+</div>	

@@ -1,0 +1,450 @@
+<html >
+<head>
+<title><?php echo $sm['config']['title']; ?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="description" content="<?php echo $sm['config']['description']; ?>"/>
+<meta name="keywords" content="<?php echo $sm['config']['keywords']; ?>"/>
+<meta name="author" content="<?php echo $sm['config']['name']; ?>"/>
+<link href="<?php echo $sm['config']['theme_url']; ?>/css/materialize.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo $sm['config']['theme_url']; ?>/css/socialmatch.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo $sm['config']['theme_url']; ?>/css/emoticons.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $sm['config']['theme_url']; ?>/css/sweetalert.css">
+<link rel="stylesheet" href="<?php echo $sm['config']['theme_url']; ?>/css/hint.css"/>
+<link rel="stylesheet" href="<?php echo $sm['config']['theme_url']; ?>/css/scroller.css"/>  
+<link rel="stylesheet" href="<?php echo $sm['config']['theme_url']; ?>/css/wdt-emoji-bundle.css"/>  
+<link href="<?php echo $sm['config']['theme_url']; ?>/css/fbphotobox.css" rel="stylesheet" type="text/css" /> 
+<? $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
+<script>
+function d_d() {
+	var w = window,
+		d = document,
+		e = d.documentElement,
+		g = d.getElementsByTagName('body')[0],
+		x = w.innerWidth || e.clientWidth || g.clientWidth,
+		y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+	var isiPhone = 		navigator.userAgent.toLowerCase().indexOf("iphone");
+	var isiPad = 		navigator.userAgent.toLowerCase().indexOf("ipad");
+	var isiPod = 		navigator.userAgent.toLowerCase().indexOf("ipod");
+	var isiAndroid = 	navigator.userAgent.toLowerCase().indexOf("android");
+	if(isiPhone > -1 || isiPad > -1 || isiPod > -1 || isiAndroid > -1){
+		window.location= "<?=$sm['config']['site_url'];?>/mobile.php";
+	}
+	if(x <= 600){
+		window.location= "<?=$sm['config']['site_url'];?>/mobile.php";
+	}
+}
+d_d();
+</script>	
+<?php
+
+$site_config = json_encode($sm['config']);
+$site_prices = json_encode($sm['price']);
+$account_basic = json_encode($sm['basic']);
+$account_premium = json_encode($sm['premium']);
+$site_lang = json_encode($sm['lang']);
+$user_info = json_encode($sm['user']);
+$filter_age = 0;
+echo 
+'<script>
+var url;
+var mobile = false;
+var chatLimit = false;
+var site_config = '. $site_config  . ';
+var site_prices = '. $site_prices  . ';
+var account_basic = '. $account_basic  . ';
+var account_premium = '. $account_premium  . ';
+var site_lang = '. $site_lang  . ';
+var user_info = '. $user_info  . ';
+function request_source(){
+	return \'' . $sm['config']['ajax_path'] . '\';
+}
+function site_title(){
+	return \'' . $sm['config']['title'] . '\';
+}	
+function theme_source(){
+	return \'' . $sm['config']['theme_url'] . '\';
+}
+function site_url(){
+	return \'' . $sm['config']['site_url'] . '\';
+}	
+function user_id(){
+	return \'' . $sm['user']['id'] . '\';
+}
+var current_user_id = 0;
+var user_name;	
+</script>';
+?>
+<?= siteConfig('css'); ?>
+</head>
+<body class="hidden">
+    <div class="row">
+        <div class="col ss1 real hide-mobile" style="z-index:10; background:#5177a4">
+            <div class="logo">
+                <a href="<?=$sm['config']['site_url']; ?>"><img class="responsive-img" src="<?= $sm['config']['logo']; ?>" /></a>
+            </div>
+            <div class="menu center-align">
+                <div id="profile-menu" data-activates='dropdown1' class="profile-photo" data-src="<?= $sm['user']['profile_photo']; ?>">
+					<ul id='dropdown1' class='dropdown-content blue-text text-darken-2'>
+						<li style="font-size:12px;"><a href="#" onClick="goToProfile(<?= $sm['user']['id']; ?>)"><?= $sm['lang'][46]['text']; ?></a></li>
+						<li style="font-size:12px;"><a href="javascript:;" data-surl="settings" data-uid=""><?= $sm['lang'][47]['text']; ?></a></li>
+						<? if($sm['user']['admin'] == 1){ ?>
+						<li class="divider"></li>
+						<li style="font-size:12px;"><a href="<?= $sm['config']['site_url']; ?>admin">Admin panel</a></li>
+						<? } ?>
+						<li class="divider"></li>						
+						<li style="font-size:12px;"><a href="<?= $sm['config']['site_url']; ?>logout"><?= $sm['lang'][48]['text']; ?></a></li>
+					</ul>
+                </div>
+                <ul>
+                    <li style="cursor:pointer" data-murl="meet">
+                        <span class="hint--right" data-hint="<?= $sm['lang'][49]['text']; ?>"><i class="mdi-social-public"></i></span>
+                    </li>                
+                    <li  style="cursor:pointer" data-murl="discover">
+                        <span class="hint--right" data-hint="<?= $sm['lang'][50]['text']; ?>"><i class="mdi-action-account-child"></i></span>
+                    </li>
+                    <li  style="cursor:pointer" data-murl="matches">
+                        <span class="hint--right" data-hint="<?= $sm['lang'][51]['text']; ?>"><i class="mdi-action-favorite"></i></span>
+                    </li> 					
+                    <li  style="cursor:pointer" data-murl="popular">
+                        <span class="hint--right" data-hint="<?= $sm['lang'][52]['text']; ?>"><i class="mdi-social-whatshot"></i></span>
+                    </li>                    
+                    <li  style="cursor:pointer" data-murl="fans">
+                        <span class="hint--right" data-hint="<?= $sm['lang'][53]['text']; ?>"><i class="mdi-action-stars"></i></span>
+                    </li> 
+                    <li  style="cursor:pointer" data-murl="visits">
+                        <span class="hint--right" data-hint="Visits"><i class="mdi-image-remove-red-eye"></i></span>
+                    </li> 					
+                    <li  style="cursor:pointer" data-murl="settings">
+                        <span class="hint--right" data-hint="<?= $sm['lang'][47]['text']; ?>"><i class="mdi-action-settings"></i></span>
+                    </li>                     
+                </ul>
+            </div>          
+        </div>
+        <div class="col sl10 real">
+            
+            <div class="col s2 real z-depth-1 hide-mobile">
+                
+                <div class="profile-top-left " >
+                    <div data-surl="profile" data-uid="" data-src="<?= $sm['user']['profile_photo']; ?>" class="profile-photo" style="cursor:pointer;" ></div>
+                    <div class="user-name" >
+                        <a href="javascript:;"><h1  ><?= $sm['user']['name']; ?>
+                        </h1></a>
+
+
+                    </div>
+                    <div class="user-controls">
+                        <div class="gift" data-act="" data-tooltip="<?= $sm['lang'][54]['text']; ?>">
+                           
+                        </div>                          
+                        <div class="videocall" data-surl="" data-uid="" data-tooltip="<?= $sm['lang'][55]['text']; ?>">
+                           
+                        </div>                      
+                    </div>
+                </div>
+                
+                <div class="profile-bottom-left">
+                    <div class="title">
+                        <select class="browser-default" id="chat-filter">
+                            <option value="1"><?= $sm['lang'][56]['text']; ?></option>
+                            <option value="2"><?= $sm['lang'][57]['text']; ?></option>
+                            <option value="3"><?= $sm['lang'][58]['text']; ?></option>
+                            <option value="4"><?= $sm['lang'][59]['text']; ?></option>
+                            <option value="5"><?= $sm['lang'][60]['text']; ?></option>                            
+                        </select>
+                    </div>
+					<div id="chat-container">
+						<?= getUserFriends($sm['user']['id']); ?>
+					</div>
+                </div>    
+            </div>
+			
+			<div id="data-content"><?php echo $sm['content']; ?></div>
+			
+            <div class="col s3 real  z-depth-1 hide-mobile" style="background:#e9eaed">
+                <div class="card-panel" style="margin:10px;margin-top:-01px;">  			
+                  <span style="color:#83989f; font-size:18px"><i class="mdi-action-favorite-outline"></i> <?= $sm['lang'][61]['text']; ?></span>
+					<div id="list-suggests">
+						<?= likeSuggest($sm['user']['id'],$sm['user']['lang'],$sm['user']['looking'],6); ?> 					
+					</div>
+                </div>
+                <div class="card-panel center-align" style="margin:10px;margin-top:-01px;height:300px">
+					<?= siteConfig('ads2'); ?>
+                </div>                
+                <div class="card-panel" style="position:absolute;width:93%;bottom:0;margin:10px;padding:10px;margin-bottom:0px;">
+                  <span class="blue-text text-darken-2" style="font-size:10px">
+                      <?= $sm['config']['name']; ?> - <a href="<?= $sm['config']['site_url']; ?>terms"><?= $sm['lang'][62]['text']; ?></a> - <a href="<?= $sm['config']['site_url']; ?>privacy"><?= $sm['lang'][63]['text']; ?></a> - <a href="mailto:<?= $sm['config']['email']; ?>"> <?= $sm['lang'][64]['text']; ?></a></span>
+                </div>                
+            </div>
+        </div>
+
+        <div class="col sl1 real z-depth-3" style="background:#000;">
+           <div class="user-spot">
+                <div class="add-yourself"><div class="profilePhoto" style="background-image: url(<?= $sm['user']['profile_photo']; ?>)"></div><i class="mdi-image-control-point"></i></div>             
+               <div id="user-spot">
+					<div id="my-sphoto" ></div>			   
+					<?= spotLight($sm['user']['lat'],$sm['user']['lng']); ?>
+               </div>
+                <div class="load-more"><i class="mdi-navigation-expand-more"></i></div>                 
+           </div>
+        </div>
+		<? if($sm['user']['total_photos'] == 0 ) { ?>
+			<div id="manage-photos" >
+		<? } else { ?>
+			<div id="manage-photos" style="display:none" >
+		<? } ?>
+			<div class="overlay"></div> 
+			<div class="your-photos">
+				<div class="title">
+					<h3><?= $sm['lang'][65]['text']; ?></h3><i data-act="mphotos" class="mdi-navigation-close"></i>   
+				</div>
+				<div class="photos left-algin">
+					<b data-photos-filter="3" style="cursor:pointer;color:#45648a"><i class="mdi-image-camera-alt"></i> <?= $sm['lang'][66]['text']; ?> (<?= $sm['user']['total_photos']; ?>)</b> &nbsp 
+					<b data-photos-filter="1" style="cursor:pointer;color:#45648a"><i class="mdi-action-lock-open"></i> <?= $sm['lang'][67]['text']; ?> (<?= $sm['user']['total_photos_public']; ?>)</b> &nbsp 
+					<b data-photos-filter="2" style="cursor:pointer;color:#45648a"><i class="mdi-action-lock-outline"></i> <?= $sm['lang'][68]['text']; ?> (<?= $sm['user']['total_photos_private']; ?>)</b><br><br>
+						<? if($sm['user']['total_photos'] == 0 ) { ?>
+							<center><h3 id="add-photos-big" style="cursor:pointer;padding-top:65px;">
+							<i class="mdi-image-camera-alt" style="font-size:166px;"></i>
+							</h3>
+							<h4 style="margin-top:30px;"><?= $sm['lang'][69]['text']; ?> </h4>
+							</center>
+						<? }
+						echo '<div id="user-photos">'.getUserPhotos($sm['user']['id'],1,0).'</div>';						
+						?>
+					<div class="progress" id="loading-photos" style="display:none;width:60%;margin-left:20%;margin-right:20%;margin-top:5%">
+					  <div class="indeterminate blue lighten-2" ></div>
+					</div>						
+				</div>
+				<div class="footer">
+					<h3 style="margin-right:50px;"><a href="javascript:;" id="add-photos"><i class="mdi-file-cloud-upload"></i> <?= $sm['lang'][70]['text']; ?> </a></h3>  
+					<h3 style="margin-left:50px;"><a href="javascript:;" id="insta-import" style="color:#316088"><i class="mdi-notification-sync"></i> Instagram </a></h3>					
+				</div>    
+			</div>  
+		</div>		
+    </div>
+	<div id="add-spotlight" style="display:none">
+			<div class="overlay"></div> 
+			<div class="your-photos">
+				<div class="title">
+					<h3><?= $sm['lang'][71]['text']; ?></h3><i id="s_close" class="mdi-navigation-close"></i>   
+				</div>
+				<div class="photos left-algin">
+				<?= $sm['lang'][72]['text']; ?> <b><?= $sm['price']['spotlight']; ?> <?= $sm['lang'][73]['text']; ?></b><br><br>
+					<?
+					echo '<div id="user-photos-spotlight">'.getUserPhotosSpotlight($sm['user']['id']).'</div>';						
+					?>
+				<form id="add-photo-spotlight">
+					<input type="hidden" name="s_photo" id="s_photo" />
+					<input type="hidden" name="s_uid" value="<?= $sm['user']['id']; ?>" />
+					<input type="hidden" name="s_lat" value="<?= $sm['user']['lat']; ?>" />
+					<input type="hidden" name="s_lng" value="<?= $sm['user']['lng']; ?>" />
+					<input type="hidden" name="s_lang" value="<?= $sm['user']['lang']; ?>" />
+					<input type="hidden" name="action" value="spotlight" />					
+				</form>
+				</div>
+				<div class="footer">
+				<div id="add-sphoto" style="background:#29b6f6 ;border-radius:20px;width:30%;padding:5px;margin:0 auto;margin-bottom:20px;margin-top:10px;cursor:pointer;">
+					<center><b style="color:#fff"><?= $sm['lang'][74]['text']; ?></b></center>
+				</div>   				
+				</div>    
+			</div>  
+		</div>		
+    </div>
+
+	<div id="send-gift" style="display:none">
+		<div class="overlay"></div> 
+		<div class="your-photos">
+			<div class="title">
+				<h3><?= $sm['lang'][75]['text']; ?><span id="g-name"></span></h3><i id="g_close" class="mdi-navigation-close"></i>   
+			</div>
+			<div class="photos left-algin">
+			<?= $sm['lang'][76]['text']; ?><b id="g-name2"></b><br><br>
+				<?= getGifts(); ?>
+			<form id="send-gift-form">
+				<input type="hidden" name="g_id" id="g_id" />				
+				<input type="hidden" name="g_src" id="g_src" />
+				<input type="hidden" name="g_price" id="g_price" />					
+				<input type="hidden" name="action" value="gift" />					
+			</form>
+			</div>
+			<div class="footer">
+			<div id="send-gift-btn" style="background:#29b6f6 ;border-radius:20px;width:30%;padding:5px;margin:0 auto;margin-bottom:20px;margin-top:10px;cursor:pointer;">
+				<center><b style="color:#fff"><?= $sm['lang'][77]['text']; ?></b></center>
+			</div>   				
+			</div>    
+		</div>  
+	</div>		
+  	
+	
+	<div id="payment_module" style="display:none" >
+		<div class="overlay"></div>   
+		<div class="payment"> 
+		  <div class="amount">
+			<?= $sm['lang'][78]['text']; ?>
+		  </div>
+		  <div class="options">
+			<aside><form>
+			  <label><?= $sm['lang'][79]['text']; ?></label>
+			  <select style="font-size:14px;" id="payment-select">
+				<?= getCreditsPackages(); ?>
+			  </select>
+			  <div class="ccard">
+			  <label><?= $sm['lang'][80]['text']; ?></label>
+			  <?php if(siteConfig('stripe_secret') != ''){ ?>
+				<fieldset class="sm " style="width:23%">
+				  <label class="subscribe grayScale" data-payment="3">
+					  <img src="<?php echo $sm['config']['theme_url']; ?>/images/creditcard-logo.png" width="50%"/>
+
+				  </label>
+				</fieldset>
+				<? } if(siteConfig('fortumo_secret') != ''){?>
+				<fieldset class="sm " style="width:23%">
+				  <label class="subscribe grayScale" data-payment="4">
+						<img src="<?php echo $sm['config']['theme_url']; ?>/images/fortumo-logo.png" width="50%"/>
+
+				  </label>
+				</fieldset>	
+				<? } if(siteConfig('paypal') != ''){?>				
+				<fieldset class="sm " style="width:23%">
+				  <label class="subscribe grayScale" data-payment="1">
+					  <img src="<?php echo $sm['config']['theme_url']; ?>/images/paypal-logo.png" width="50%"/>
+
+				  </label>
+				</fieldset>
+				<? } if(siteConfig('paygol') != ''){?>				
+				<fieldset class="sm" style="width:23%">
+				  <label class="subscribe grayScale" data-payment="2">
+					  <img src="<?php echo $sm['config']['theme_url']; ?>/images/paygol-logo.png" width="50%"/>
+
+				  </label>
+				</fieldset>
+				<? } ?>				
+			  </div>
+				</form>
+				<form id="method01" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+					<input type="hidden" name="cmd" value="_xclick">
+					<input type="hidden" name="business" value="<?= $sm['config']['paypal']; ?>">
+					<input type="hidden" name="item_name" id="payment-name" value="<?= $sm['config']['name']; ?> Credits">
+					<input type="hidden" name="currency_code" value="<?= $sm['config']['currency']; ?>">
+					<input type="hidden" name="amount" id="payment-amount" value="">
+					<input type="hidden" name="custom" id="payment-custom" value="">					
+					<input type="hidden" name="notify_url" value="<?= $sm['config']['site_url']; ?>/assets/sources/ipn.php">
+					<input type="hidden" name="return" value="<?= $sm['config']['site_url']; ?>credits-ok">					
+				</form>
+				<form id="method02" name="pg_frm" method="post" action="https://www.paygol.com/pay" >
+				   <input type="hidden" name="pg_serviceid" value="<?= $sm['config']['paygol']; ?>">
+				   <input type="hidden" name="pg_currency" value="<?= $sm['config']['currency']; ?>">
+				   <input type="hidden" name="pg_name" id="payment-name2" value="<?= $sm['config']['name']; ?> Credits">
+				   <input type="hidden" name="pg_custom" id="payment-custom2" value="<?= $sm['user']['id']; ?>">
+				   <input type="hidden" name="pg_price" id="payment-amount2" value="">
+				   <input type="hidden" name="pg_return_url" value="<?= $sm['config']['site_url']; ?>credits-ok">
+				   <input type="hidden" name="pg_cancel_url" value="<?= $sm['config']['site_url']; ?>">     
+				</form>				
+					
+			  <button class="form-submit" id="payment-submit" ><?= $sm['lang'][83]['text']; ?></button>
+			</aside>
+			
+			<aside class="other">
+			  <ul>
+				<li>
+				  <a href="javascript:;"><?= $sm['lang'][84]['text']; ?></a>
+				</li>
+				<li style="font-size:14px; text-align:left;color:#444342">
+				  <p >** <?= $sm['premium']['chat']; ?> <?= $sm['lang'][85]['text']; ?></p>
+				  <? if($sm['premium']['videocall'] == 1) { ?>
+				  <p >** <?= $sm['lang'][86]['text']; ?> </p>
+				  <? } ?>
+				  <? if($sm['premium']['private'] == 1) { ?>
+				  <p >** <?= $sm['lang'][87]['text']; ?> </p>  
+				  <? } ?>
+				  <p >** <?= $sm['lang'][88]['text']; ?> </p>              
+				</li>          
+				<li>
+				  <?= getPremiumPackages(); ?>
+				  <form id="buy-premium" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+					<input type="hidden" name="cmd" value="_xclick">
+					<input type="hidden" name="business" value="<?= $sm['config']['paypal']; ?>">
+					<input type="hidden" name="item_name" id="payment-name3" value="<?= $sm['config']['name']; ?> Premium">
+					<input type="hidden" name="currency_code" value="<?= $sm['config']['currency']; ?>">
+					<input type="hidden" name="amount" id="payment-amount3" value="">
+					<input type="hidden" name="custom" id="payment-custom3" value="">					
+					<input type="hidden" name="notify_url" value="<?= $sm['config']['site_url']; ?>/assets/sources/ipnpremium.php">
+					<input type="hidden" name="return" value="<?= $sm['config']['site_url']; ?>">						
+				  </form>				  
+				</li>
+			  </ul>
+			</aside>
+		  </div>
+		</div> 
+	</div>
+	
+	<div class="videocall-chat"><video id="video-chat" autoplay></video></div>
+	<div class="videocall-container" style="display:none" >
+		<div class="bulbs">
+			<div id="end-call" class="bulb-1 "><span  class="mdi-communication-call-end"></span></div>
+			<div id="chat-call" class="bulb-2"><span  class="mdi-communication-chat"></span></div>  
+			<div id="turn-mic" class="bulb-3"><span  class="mdi-av-mic"></span></div>			
+			<div id="turn-video" class="bulb-4"><span  class="mdi-av-videocam"></span></div>    
+
+		</div>
+		<div class="videocall-container calle"  >
+			<div class="loading">
+				<b id="call_status" style="color:#FFF;"></b><br><br><br><br>
+				<div class="call-loader" ></div>
+			</div>
+			<div class="profile-photo1">
+				<img src="<?= $sm['user']['profile_photo']; ?>" />
+				<video id="my-video" muted="true" autoplay></video>
+				<video id="my-video-hidden" style="display:none" muted="true" autoplay></video>
+			</div>
+			<div class="video">
+				<div class="topleft">
+					<span><b id="call-name"></b><br></span><span id="minutes">00</span>:<span id="seconds">00</span>
+				</div>					
+				<video id="their-video" autoplay></video>
+			</div>
+			<img class="profile-photo2" alt="jofpin"/>
+		</div>
+	</div>
+	<div class="videocall-notify" style="display:none" >
+		<div class="ball">
+			<div class="halo"></div>
+			<div class="msg-count"><i class="fa fa-video-camera"></i></div>
+			<div class="notif">
+				<div class="bar">
+					<div class="action"></div>
+					<p class="text" id="text_videocall"></p>
+				</div>
+				<div class="arrow"></div>
+			</div>
+			<div class="buttons">  
+				<a class="btn btn-accept" id="acept-video"><span class="icon icon-arrow"></span></a>
+				<a class="btn btn-decline" id="reject-video"><span class="icon icon-x"></span></a>
+			</div>
+		</div>
+	</div>	
+	<form enctype="multipart/form-data" name='imageform' role="form" id="add-photos-form" method="post" action="<?php echo $sm['config']['site_url']; ?>assets/sources/ajaxImage.php">                  
+		<input type="file" name="photos[]" id="add-photos-file" accept="image/*" multiple="true" style="display:none" />
+	</form> 	
+<audio id="notiSound" type="audio/wav" preload="false" ><source src='<?= $sm['config']['site_url'];?>/assets/sources/Notification.wav' /></audio>	
+<audio id="callSound" type="audio/wav" preload="false" ><source src='<?= $sm['config']['site_url'];?>/assets/sources/Call.mp3' /></audio>
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/jquery-2.1.1.js"></script>
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/jquery.form.min.js"></script>
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/materialize.js"></script>
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/classie.js"></script>
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/FlatNotifiy.js"></script>
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/fbphotobox.js"></script>
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/scroller.js"></script> 
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/sweetalert.min.js"></script> 
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/peer.js"></script> 
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/galleria-1.4.2.min.js"></script> 
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/jquery.preload.js"></script> 
+<script type="text/javascript" src="<?php echo $sm['config']['theme_url']; ?>/js/emoji.min.js"></script>
+<script type="text/javascript" src="<?php echo $sm['config']['theme_url']; ?>/js/wdt-emoji-bundle.js"></script>
+<script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+<script src="https://checkout.stripe.com/checkout.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places&key=<?= siteConfig('google_maps'); ?>"></script>
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/plug.js"></script>
+<script src="<?php echo $sm['config']['theme_url']; ?>/js/socialmatch.js"></script>
+<?= siteConfig('js'); ?>
+</body>
+</html>

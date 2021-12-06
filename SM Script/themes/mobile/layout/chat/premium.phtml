@@ -1,0 +1,33 @@
+			<?php 
+			if($_GET['id'] != NULL ){
+				$usid = secureEncode($_GET['id']);	
+				getUserInfo($usid,1);
+			}
+			$profile_info = json_encode($sm['profile']);	
+			echo 
+			'<script>
+			current_user_id = ' . $sm['profile']['id'] .';
+			var profile_info = '. $profile_info  . ';	
+			url = "chat";
+			</script>';
+			?>
+
+				
+                <div style="margin-top:20%" > 
+					<center>
+					    <i class="mdi-action-query-builder" style="padding-top:65px;color:#666;font-size:166px;"></i>
+						<h5 style="color:#333;font-size:16px;">
+						<?= $sm['user']['first_name']; ?> <?= $sm['lang'][92]['text']; ?><br>
+						</h5>
+					
+					<div class="divider"></div>	
+					<p style="color:#333;font-size:16px;">
+					<a href="javascript:;" data-credits="1" style="color:#23c524"><?= $sm['lang'][94]['text']; ?> <?= $sm['basic']['chat']; ?> <?= $sm['lang'][95]['text']; ?></a><br>
+
+					<?= $sm['lang'][100]['text']; ?>  <i class="mdi-social-mood"></i>
+					</p>
+					</center>
+                </div>
+
+        
+            </div> 

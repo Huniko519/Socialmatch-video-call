@@ -1,0 +1,194 @@
+<?php 
+if($_GET['id'] != NULL ){
+	$usid = secureEncode($_GET['id']);	
+	getUserInfo($usid,1);
+}
+
+$check = blockedUser($sm['user']['id'],$sm['profile']['id']);
+if($check == 1){
+	header('Location:'.$sm['config']['site_url']);
+}
+visit($sm['user']['id'],$sm['profile']['id']);
+
+$profile_info = json_encode($sm['profile']);	
+echo 
+'<script>
+current_user_id = ' . $sm['profile']['id'] .';
+var profile_info = '. $profile_info  . ';	
+url = "profile";
+</script>';
+?>
+			<div class="col s7 real" >
+                <div class="profile-photos" id="profile-photos">
+					<?= getUserPhotosHeader($sm['profile']['id']); ?>  
+                </div>
+                
+                <div class="profile-menu center-align ">
+                    <ul>					
+                        <li class="selected" data-url="about"  data-uid="<?= $sm['profile']['id']; ?>">
+                            <?= $sm['lang'][117]['text']; ?> <?= $sm['profile']['first_name']; ?>
+                        </li>						
+						<? if($sm['profile']['total_photos_public'] > 0){ ?>
+                        <li data-url="photos" data-uid="<?= $sm['profile']['id']; ?>">
+                            <b><?= $sm['profile']['total_photos_public']; ?></b> <?= $sm['lang'][67]['text']; ?>
+                        </li>
+						<? } else { ?>
+                        <li>
+                            <b>0</b> <?= $sm['lang'][67]['text']; ?>
+                        </li>
+						<? } ?>
+						
+						<? if($sm['profile']['total_photos_private'] > 0){ ?>
+                        <li  data-url="p_photos"  data-uid="<?= $sm['profile']['id']; ?>">
+                            <b><?= $sm['profile']['total_photos_private']; ?></b> <?= $sm['lang'][68]['text']; ?>
+                        </li>   
+						<? } else { ?>
+                        <li>
+                            <b>0</b> <?= $sm['lang'][68]['text']; ?>
+                        </li>
+						<? } ?>	
+						<? if($sm['profile']['id'] != $sm['user']['id']){ ?>
+                        <li style="background:#fff !important;" onclick="reportUser(<?= $sm['profile']['id']; ?>,'<?= $sm['profile']['first_name']; ?>','<?= $sm['profile']['profile_photo']; ?>');">
+							<span style="color:#E62117"><?= $sm['lang'][277]['text']; ?></span>
+                        </li>
+						<? } ?>							
+                    </ul>
+                </div>
+                
+                <div class="profile-content center-align" id="scrollContent">
+                    <? if($sm['profile']['bio'] == ''){ ?><h1><?= $sm['lang'][118]['text']; ?></h1><? } else { echo '<h1 style="width:100%;font-size:20px;margin-top:20px;padding-right:10%;padding-left:10%;line-height:30px;">'.$sm['profile']['bio'].'</h1>'; } ?>
+                    <div class="bubble ">
+                        <i class="mdi-social-cake"></i>
+                        <h3><?= $sm['profile']['age']; ?></h3><span><?= $sm['lang'][119]['text']; ?></span>
+                    </div>
+                    <div class="bubble ">
+                        <i class="mdi-maps-place"></i>
+                        <h3 id="city"><?= $sm['profile']['city']; ?></h3><span><?= $sm['profile']['country']; ?></span>
+                    </div>
+                    <div class="bubble ">
+                        <i class="mdi-action-favorite"></i>
+						<h3><?= $sm['profile']['total_likers']; ?></h3><span><?= $sm['lang'][278]['text']; ?></span>												
+                    </div>
+
+					<div style="width:100%;height:1px;padding-bottom:15px;padding-top:15px;border-bottom:1px solid #f0f0f0;"><br></div>
+					
+					<div class="interests">
+						<h1 style="width:100%;font-size:20px;margin-top:0px;padding-right:10%;padding-left:10%;line-height:10px;color:#444"><?= $sm['lang'][276]['text']; ?></h1>
+						<? if($sm['profile']['id'] == $sm['user']['id']){ ?>
+						<div class="add-int">
+							<input type="text" name="add_interest" placeholder="+" id="searchBox"  class="add_interest" />
+							<ul id="searchResults" class="term-list hiddden"></ul>					
+						</div>
+						<? } ?>							
+						<div id="new-int">
+						<div class="int"><span><?= $sm['config']['name']; ?></span></div>
+						<?  if($sm['profile']['id'] != $sm['user']['id']){
+								foreach ($sm['profile']['interest'] as $valor) {
+									echo '<div class="int"><span>'.$valor['name'].'</span></div>';
+								} 
+							} else {
+								foreach ($sm['profile']['interest'] as $valor) {
+									echo '<div class="int" data-interest="'.$valor['id'].'"><div class="delete_int" onclick="deleteInterest('."'".$valor['id']."'".')" ></div><span>'.$valor['name'].'</span></div>';
+								} 								
+							}
+						?>
+						</div>
+						
+						
+
+					</div>
+					<div class="extended-info">
+						<div class="left"><p style="font-weight:500"><?= $sm['lang'][223]['text']; ?>:</p></div>
+						<div class="right"><p>
+							<? if($sm['profile']['extended']['field1'] == ''){
+								echo '<span style="font-style: italic;color:#999;font-size:12px;">'.$sm['lang'][279]['text'].'</span>';
+							} else { 
+								echo $sm['profile']['extended']['field1'];
+							}?> 
+						</p></div>
+					
+						
+						<div class="left"><p style="font-weight:500"><?= $sm['lang'][227]['text']; ?>:</p></div>
+						<div class="right"><p>
+							<? if($sm['profile']['extended']['field2'] == ''){
+								echo '<span style="font-style: italic;color:#999;font-size:12px;">'.$sm['lang'][279]['text'].'</span>';
+							} else { 
+								echo $sm['profile']['extended']['field2'];
+							}?>						</p></div>		
+						
+						<div class="left"><p style="font-weight:500"><?= $sm['lang'][232]['text']; ?>:</p></div>
+						<div class="right"><p>
+							<? if($sm['profile']['extended']['field3'] == ''){
+								echo '<span style="font-style: italic;color:#999;font-size:12px;">'.$sm['lang'][279]['text'].'</span>';
+							} else { 
+								echo $sm['profile']['extended']['field3'];
+							}?>
+							</p></div>		
+						
+						<div class="left"><p style="font-weight:500"><?= $sm['lang'][235]['text']; ?>:</p></div>
+						<div class="right"><p>
+							<? if($sm['profile']['extended']['field4'] == ''){
+								echo '<span style="font-style: italic;color:#999;font-size:12px;">'.$sm['lang'][279]['text'].'</span>';
+							} else { 
+								echo $sm['profile']['extended']['field4'];
+							}?>
+							</p></div>		
+						<div class="left"><p style="font-weight:500"><?= $sm['lang'][236]['text']; ?>:</p></div>
+						<div class="right"><p>
+							<? if($sm['profile']['extended']['field5'] == ''){
+								echo '<span style="font-style: italic;color:#999;font-size:12px;">'.$sm['lang'][279]['text'].'</span>';
+							} else { 
+								echo $sm['profile']['extended']['field5'];
+							}?>
+							</p></div>		
+
+					</div>	
+					<div class="extended-info">	
+						<div class="left"><p style="font-weight:500"><?= $sm['lang'][246]['text']; ?>:</p></div>
+						<div class="right"><p>
+							<? if($sm['profile']['extended']['field6'] == ''){
+								echo '<span style="font-style: italic;color:#999;font-size:12px;">'.$sm['lang'][279]['text'].'</span>';
+							} else { 
+								echo $sm['profile']['extended']['field6'];
+							}?>
+							</p></div>	
+							
+						<div class="left"><p style="font-weight:500"><?= $sm['lang'][252]['text']; ?>:</p></div>
+						<div class="right"><p>
+							<? if($sm['profile']['extended']['field7'] == ''){
+								echo '<span style="font-style: italic;color:#999;font-size:12px;">'.$sm['lang'][279]['text'].'</span>';
+							} else { 
+								echo $sm['profile']['extended']['field7'];
+							}?>
+							</p></div>
+
+						<div class="left"><p style="font-weight:500"><?= $sm['lang'][263]['text']; ?>:</p></div>
+						<div class="right"><p>
+							<? if($sm['profile']['extended']['field10'] == ''){
+								echo '<span style="font-style: italic;color:#999;font-size:12px;">'.$sm['lang'][279]['text'].'</span>';
+							} else { 
+								echo $sm['profile']['extended']['field10'];
+							}?>
+							</p></div>								
+
+						<div class="left"><p style="font-weight:500"><?= $sm['lang'][258]['text']; ?>:</p></div>
+						<div class="right"><p>
+							<? if($sm['profile']['extended']['field8'] == ''){
+								echo '<span style="font-style: italic;color:#999;font-size:12px;">'.$sm['lang'][279]['text'].'</span>';
+							} else { 
+								echo $sm['profile']['extended']['field8'];
+							}?>
+							</p></div>	
+
+						<div class="left"><p style="font-weight:500"><?= $sm['lang'][262]['text']; ?>:</p></div>
+						<div class="right"><p>
+							<? if($sm['profile']['extended']['field9'] == ''){
+								echo '<span style="font-style: italic;color:#999;font-size:12px;">'.$sm['lang'][279]['text'].'</span>';
+							} else { 
+								echo $sm['profile']['extended']['field9'];
+							}?>
+						</p></div>	
+					</div>					
+		
+				</div>
+            </div>

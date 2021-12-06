@@ -1,0 +1,513 @@
+			<script>
+			url = "settings";
+			</script>            
+			<div class="col s7 real" > 
+                <div class="profile-menu ">
+                    <ul>
+                        <li data-settings="1" class="header-settings selected" >
+                            <?= $sm['lang'][127]['text']; ?>
+                        </li> 
+                       <li data-settings="3" class="header-settings" >
+                            <?= $sm['lang'][221]['text']; ?>
+                        </li> 						
+                        <li data-settings="2" class="header-settings" >
+                            <?= $sm['lang'][128]['text']; ?>
+                        </li> 
+						
+                        <li data-settings="4" class="header-settings" >
+							<?= $sm['lang'][130]['text']; ?>
+                        </li> 
+                        <li data-settings="5" class="header-settings" >
+                            <?= $sm['lang'][131]['text']; ?>
+                        </li>   						
+                    </ul>
+                </div>		
+                <div class="wall" id="site-settings" >
+					<div data-settings-page="1">
+						<form class="col s12" method="post" id="update-profile">
+							<h5><?= $sm['lang'][132]['text']; ?></h5>
+							<div class="divider"></div> 
+							<p style="color:#999;"><?= $sm['lang'][133]['text']; ?></p>					
+							  <div class="row">
+								<div class="input-field col s4">
+								  <label><?= $sm['lang'][26]['text']; ?>:</label>
+								</div>
+								<div class="input-field col s6">
+								  <input type="text" name="name" value="<?= $sm['user']['name']; ?>"  >
+								</div>
+							  </div>
+							  <div class="row">
+								<div class="input-field col s4">
+								  <label><?= $sm['lang'][28]['text']; ?>:</label>
+								</div>
+								<div class="input-field col s6">
+								  <input type="text" name="email" value="<?= $sm['user']['email']; ?>">
+								</div>
+							  </div> 
+						  <div class="row">
+							<div class="input-field col s4">
+							  <label><?= $sm['lang'][30]['text']; ?>:</label>
+							</div>
+							<? $timestamp = strtotime($sm['user']['birthday']); ?>
+
+							<div class="input-field col s2">
+								<div class="input-field col s12">
+								  <input type="text" name="day" value="<?= date("d", $timestamp); ?>">
+								</div>							
+							</div>
+							<div class="input-field col s2">
+								<div class="input-field col s12">
+								  <input type="text" name="month" value="<?= date("m", $timestamp); ?>">
+								</div>							
+							</div>
+							<div class="input-field col s2">
+								<div class="input-field col s12">
+								  <input type="text" name="year" value="<?= date("Y", $timestamp); ?>">
+								</div>							
+							</div>							        
+						  </div>  
+						  <div class="row">
+							<div class="input-field col s4">
+							  <label><?= $sm['lang'][32]['text']; ?>:</label>
+							</div>
+							<div class="input-field col s6">
+							  <input type="text"  id="loc" value="<?= $sm['user']['city']; ?>">
+							</div>
+						  </div>
+						  <div class="row">
+							<div class="input-field col s4">
+							  <label><?= $sm['lang'][117]['text']; ?>:</label>
+							</div>
+							<div class="input-field col s6">
+							  <input type="text"  id="bio" name="bio" value="<?= $sm['user']['bio']; ?>">
+							</div>
+						  </div>						  
+						  <div class="row">
+							<div class="input-field col s4">
+							  <label><?= $sm['lang'][134]['text']; ?>:</label>
+							</div>
+
+							<div class="input-field col s6">
+								<select class="browser-default" name="lang">
+									<option value="<?= $sm['user']['lang']; ?>"> <?= getCurrentLang($sm['user']['lang']); ?> </option>
+									<?= getSiteLangs($sm['user']['lang']); ?>
+								</select>
+							</div>     
+						  </div> 					  
+						  <div class="row">
+							<div class="input-field col s4">
+							  <label><?= $sm['lang'][34]['text']; ?>:</label>
+							</div>
+							<div class="input-field col s6">
+							  <input name="gender" type="radio" value="1"  <? if($sm['user']['gender'] == 1){echo 'checked';} ?> id="male" />
+							  <label for="male"><?= $sm['lang'][35]['text']; ?></label>
+							  <input name="gender" type="radio" value="2"  <? if($sm['user']['gender'] == 2){echo 'checked';} ?> id="female" />
+							  <label for="female"><?= $sm['lang'][36]['text']; ?></label>
+							</div>
+						  </div>
+						  
+						<input type="hidden" value="update" name="action" />
+						<input type="hidden" name="city" id="locality" value="<?= $sm['user']['city']; ?>" />
+						<input type="hidden" name="country" id="country" value="<?= $sm['user']['country']; ?>"  />
+						<input type="hidden" name="lat" id="lat" value="<?= $sm['user']['lat']; ?>"  />
+						<input type="hidden" name="lng" id="lng" value="<?= $sm['user']['lng']; ?>"  />
+						
+						<br><br>
+						<div class="divider"></div> 
+						<h5 style="font-size:18px;"><?= $sm['lang'][222]['text']; ?></h5>
+								
+						  <div class="row">
+							<div class="input-field col s5">
+							  <label><?= $sm['lang'][223]['text']; ?>:</label>
+							</div>
+							<div class="input-field col s6">
+								<select class="browser-default" name="extended1">
+									<option value="<?= $sm['user']['extended']['field1']; ?>"><?= $sm['user']['extended']['field1']; ?></option>
+									<option value="<?= $sm['lang'][224]['text']; ?>"><?= $sm['lang'][224]['text']; ?></option>
+									<option value="<?= $sm['lang'][225]['text']; ?>"><?= $sm['lang'][225]['text']; ?></option>
+									<option value="<?= $sm['lang'][226]['text']; ?>"><?= $sm['lang'][226]['text']; ?></option>
+								</select>
+							</div>     
+						  </div>
+
+						  <div class="row">
+							<div class="input-field col s5">
+							  <label><?= $sm['lang'][227]['text']; ?>:</label>
+							</div>
+							<div class="input-field col s6">
+								<select class="browser-default" name="extended2">
+									<option value="<?= $sm['user']['extended']['field2']; ?>"><?= $sm['user']['extended']['field2']; ?></option>
+									<option value="<?= $sm['lang'][228]['text']; ?>"><?= $sm['lang'][228]['text']; ?></option>
+									<option value="<?= $sm['lang'][229]['text']; ?>"><?= $sm['lang'][229]['text']; ?></option>
+									<option value="<?= $sm['lang'][230]['text']; ?>"><?= $sm['lang'][230]['text']; ?></option>
+									<option value="<?= $sm['lang'][231]['text']; ?>"><?= $sm['lang'][231]['text']; ?></option>									
+								</select>
+							</div>     
+						  </div>
+	  
+						  <div class="row">
+							<div class="input-field col s5">
+							  <label><?= $sm['lang'][232]['text']; ?>:</label>
+							</div>
+							<div class="input-field col s6">
+								<select class="browser-default" name="extended3">
+									<option value="<?= $sm['user']['extended']['field3']; ?>"><?= $sm['user']['extended']['field3']; ?></option>
+									<option value="<?= $sm['lang'][233]['text']; ?> 4' 7' (140cm)"><?= $sm['lang'][233]['text']; ?> 4' 7' (140cm)</option>
+									<option value="4' 8' (142cm)">4' 8' (142cm)</option>	
+									<option value="4' 9' (145cm)">4' 9' (145cm)</option>	
+									<option value="4' 10' (147cm)">4' 10' (147cm)</option>	
+									<option value="4' 11' (150cm)">4' 11' (150cm)</option>	
+									<option value="5' 0' (152cm)">5' 0' (152cm)</option>	
+									<option value="5' 1' (155cm)">5' 1' (155cm)</option>	
+									<option value="5' 2' (157cm)">5' 2' (157cm)</option>	
+									<option value="5' 3' (160cm)">5' 3' (160cm)</option>	
+									<option value="5' 4' (163cm)">5' 4' (163cm)</option>	
+									<option value="5' 5' (162cm)">5' 5' (165cm)</option>	
+									<option value="5' 6' (168cm)">5' 6' (168cm)</option>	
+									<option value="5' 7' (170cm)">5' 7' (170cm)</option>	
+									<option value="5' 8' (173cm)">5' 8' (173cm)</option>	
+									<option value="5' 9' (175cm)">5' 9' (175cm)</option>	
+									<option value="5' 10' (178cm)">5' 10' (178cm)</option>	
+									<option value="5' 11' (180cm)">5' 11' (180cm)</option>	
+									<option value="6' 0' (183cm)">6' 0' (183cm)</option>	
+									<option value="6' 1' (185cm)">6' 1' (185cm)</option>	
+									<option value="6' 2' (188cm)">6' 2' (188cm)</option>	
+									<option value="6' 3' (191cm)">6' 3' (191cm)</option>
+									<option value="6' 4' (193cm)">6' 4' (193cm)</option>
+									<option value="6' 5' (196cm)">6' 5' (196cm)</option>
+									<option value="6' 6' (198cm)">6' 6' (198cm)</option>
+									<option value="6' 7' (201cm)">6' 7' (201cm)</option>
+									<option value="6' 8' (203cm)">6' 8' (203cm)</option>
+									<option value="6' 9' (206cm)">6' 9'(206cm)</option>
+									<option value="6' 10' (208cm)">6' 10' (208cm)</option>
+									<option value="6' 11' (211cm)">6' 11' (211cm)</option>
+									<option value="7' 0' (213cm)">7' 0' (213cm)</option>
+									<option value="7' 1' (216cm)">7' 1' (216cm)</option>
+									<option value="7' 2' (218cm)">7' 2' (218cm)</option>
+									<option value="<?= $sm['lang'][234]['text']; ?> 7' 3' (220cm)"><?= $sm['lang'][234]['text']; ?> 7' 3' (220cm)</option>									
+								</select>
+							</div>     
+						  </div>	
+						  
+						  <div class="row">
+							<div class="input-field col s5">
+							  <label><?= $sm['lang'][235]['text']; ?>: </label>
+							</div>
+							<div class="input-field col s6">
+								<select class="browser-default" name="extended4">
+									<option value="<?= $sm['user']['extended']['field4']; ?>"><?= $sm['user']['extended']['field4']; ?></option>
+									<option value="<?= $sm['lang'][233]['text']; ?> 86lbs (39kg)"><?= $sm['lang'][233]['text']; ?> 86lbs (39kg)</option>
+									<option value="88 lbs (40kg)">88 lbs (40kg)</option>	
+									<option value="90 lbs (41kg)">90 lbs (41kg)</option>	
+									<option value="93 lbs (42kg)">93 lbs (42kg)</option>	
+									<option value="95 lbs (43kg)">95 lbs (43kg)</option>	
+									<option value="97 lbs (44kg)">97 lbs (44kg)</option>	
+									<option value="99 lbs (45kg)">99 lbs (45kg)</option>	
+									<option value="101 lbs (46kg)">101 lbs (46kg)</option>	
+									<option value="104 lbs (47kg)">104 lbs (47kg)</option>	
+									<option value="106 lbs (48kg)">106 lbs (48kg)</option>	
+									<option value="108 lbs (49kg)">108 lbs (49kg)</option>	
+									<option value="110 lbs (50kg)">110 lbs (50kg)</option>	
+									<option value="112 lbs (51kg)">112 lbs (51kg)</option>	
+									<option value="115 lbs (52kg)">115 lbs (52kg)</option>	
+									<option value="117 lbs (53kg)">117 lbs (53kg)</option>	
+									<option value="119 lbs (54kg)">119 lbs (54kg)</option>	
+									<option value="121 lbs (55kg)">121 lbs (55kg)</option>	
+									<option value="123 lbs (56kg)">123 lbs (56kg)</option>	
+									<option value="126 lbs (57kg)">126 lbs (57kg)</option>	
+									<option value="128 lbs (58kg)">128 lbs (58kg)</option>	
+									<option value="130 lbs (59kg)">130 lbs (59kg)</option>	
+									<option value="132 lbs (60kg)">132 lbs (60kg)</option>	
+									<option value="134 lbs (61kg)">134 lbs (61kg)</option>	
+									<option value="137 lbs (62kg)">137 lbs (62kg)</option>	
+									<option value="139 lbs (63kg)">139 lbs (63kg)</option>	
+									<option value="141 lbs (64kg)">141 lbs (64kg)</option>	
+									<option value="143 lbs (65kg)">143 lbs (65kg)</option>	
+									<option value="145 lbs (66kg)">145 lbs (66kg)</option>	
+									<option value="148 lbs (67kg)">148 lbs (67kg)</option>	
+									<option value="150 lbs (68kg)">150 lbs (68kg)</option>	
+									<option value="152 lbs (69kg)">152 lbs (69kg)</option>	
+									<option value="154 lbs (70kg)">154 lbs (70kg)</option>	
+									<option value="156 lbs (71kg)">156 lbs (71kg)</option>	
+									<option value="159 lbs (72kg)">159 lbs (72kg)</option>	
+									<option value="161 lbs (73kg)">161 lbs (73kg)</option>	
+									<option value="163 lbs (74kg)">163 lbs (74kg)</option>	
+									<option value="165 lbs (75kg)">165 lbs (75kg)</option>	
+									<option value="167 lbs (76kg)">167 lbs (76kg)</option>	
+									<option value="170 lbs (77kg)">170 lbs (77kg)</option>	
+									<option value="172 lbs (78kg)">172 lbs (78kg)</option>	
+									<option value="174 lbs (79kg)">174 lbs (79kg)</option>	
+									<option value="176 lbs (80kg)">176 lbs (80kg)</option>	
+									<option value="178 lbs (81kg)">178 lbs (81kg)</option>	
+									<option value="181 lbs (82kg)">181 lbs (82kg)</option>	
+									<option value="183 lbs (83kg)">183 lbs (83kg)</option>	
+									<option value="185 lbs (84kg)">185 lbs (84kg)</option>	
+									<option value="187 lbs (85kg)">187 lbs (85kg)</option>	
+									<option value="189 lbs (86kg)">189 lbs (86kg)</option>	
+									<option value="192 lbs (87kg)">192 lbs (87kg)</option>	
+									<option value="194 lbs (88kg)">194 lbs (88kg)</option>	
+									<option value="196 lbs (89kg)">196 lbs (89kg)</option>	
+									<option value="198 lbs (90kg)">198 lbs (90kg)</option>	
+									<option value="200 lbs (91kg)">200 lbs (91kg)</option>	
+									<option value="203 lbs (92kg)">203 lbs (92kg)</option>	
+									<option value="205 lbs (93kg)">205 lbs (93kg)</option>	
+									<option value="207 lbs (94kg)">207 lbs (94kg)</option>	
+									<option value="209 lbs (95kg)">209 lbs (95kg)</option>	
+									<option value="211 lbs (96kg)">211 lbs (96kg)</option>	
+									<option value="214 lbs (97kg)">214 lbs (97kg)</option>
+									<option value="216 lbs (98kg)">216 lbs (98kg)</option>
+									<option value="218 lbs (99kg)">218 lbs (99kg)</option>
+									<option value="220 lbs (100kg)">220 lbs (100kg)</option>
+									<option value="222 lbs (101kg)">222 lbs (101kg)</option>
+									<option value="225 lbs (102kg)">225 lbs (102kg)</option>
+									<option value="227 lbs (103kg)">227 lbs (103kg)</option>
+									<option value="229 lbs (104kg)">229 lbs (104kg)</option>
+									<option value="231 lbs (105kg)">231 lbs (105kg)</option>
+									<option value="233 lbs (106g)">233 lbs (106kg)</option>
+									<option value="236 lbs (107kg)">236 lbs (107kg)</option>
+									<option value="238 lbs (108kg)">238 lbs (108kg)</option>
+									<option value="240 lbs (109kg)">240 lbs (109kg)</option>
+									<option value="242 lbs (110kg)">242 lbs (110kg)</option>
+									<option value="244 lbs (111kg)">244 lbs (111kg)</option>
+									<option value="247 lbs (112kg)">247 lbs (112kg)</option>
+									<option value="249 lbs (113kg)">249 lbs (113kg)</option>
+									<option value="251 lbs (114kg)">251 lbs (114kg)</option>
+									<option value="253 lbs (115kg)">253 lbs (115kg)</option>
+									<option value="255 lbs (116kg)">255 lbs (116kg)</option>
+									<option value="258 lbs (117kg)">258 lbs (117kg)</option>
+									<option value="260 lbs (118kg)">260 lbs (118kg)</option>
+									<option value="262 lbs (119kg)">262 lbs (119kg)</option>
+									<option value="<?= $sm['lang'][234]['text']; ?> 264 lbs (120kg)"><?= $sm['lang'][234]['text']; ?> 264 lbs (120kg)</option>																		
+								</select>
+							</div>     
+						  </div>
+
+						  <div class="row">
+							<div class="input-field col s5">
+							  <label><?= $sm['lang'][236]['text']; ?>: </label>
+							</div>
+							<div class="input-field col s6">
+								<select class="browser-default" name="extended5">
+									<option value="<?= $sm['user']['extended']['field5']; ?>"><?= $sm['user']['extended']['field5']; ?></option>
+									<option value="<?= $sm['lang'][237]['text']; ?>"><?= $sm['lang'][237]['text']; ?></option>
+									<option value="<?= $sm['lang'][238]['text']; ?>"><?= $sm['lang'][238]['text']; ?></option>
+									<option value="<?= $sm['lang'][239]['text']; ?>"><?= $sm['lang'][239]['text']; ?></option>
+									<option value="<?= $sm['lang'][240]['text']; ?>"><?= $sm['lang'][240]['text']; ?></option>
+									<option value="<?= $sm['lang'][241]['text']; ?>"><?= $sm['lang'][241]['text']; ?></option>
+									<option value="<?= $sm['lang'][242]['text']; ?>"><?= $sm['lang'][242]['text']; ?></option>
+									<option value="<?= $sm['lang'][243]['text']; ?>"><?= $sm['lang'][243]['text']; ?></option>
+									<option value="<?= $sm['lang'][244]['text']; ?>"><?= $sm['lang'][244]['text']; ?></option>
+									<option value="<?= $sm['lang'][245]['text']; ?>"><?= $sm['lang'][245]['text']; ?></option>									
+								</select>
+							</div>     
+						  </div>						  
+
+
+						  <div class="row">
+							<div class="input-field col s5">
+							  <label><?= $sm['lang'][246]['text']; ?>: </label>
+							</div>
+							<div class="input-field col s6">
+								<select class="browser-default" name="extended6">
+									<option value="<?= $sm['user']['extended']['field6']; ?>"><?= $sm['user']['extended']['field6']; ?></option>
+									<option value="<?= $sm['lang'][247]['text']; ?>"><?= $sm['lang'][247]['text']; ?></option>
+									<option value="<?= $sm['lang'][248]['text']; ?>"><?= $sm['lang'][248]['text']; ?></option>
+									<option value="<?= $sm['lang'][249]['text']; ?>"><?= $sm['lang'][249]['text']; ?></option>
+									<option value="<?= $sm['lang'][250]['text']; ?>"><?= $sm['lang'][250]['text']; ?></option>
+									<option value="<?= $sm['lang'][251]['text']; ?>"><?= $sm['lang'][251]['text']; ?></option>									
+								</select>
+							</div>     
+						  </div>
+
+						  <div class="row">
+							<div class="input-field col s5">
+							  <label><?= $sm['lang'][252]['text']; ?>: </label>
+							</div>
+							<div class="input-field col s6">
+								<select class="browser-default" name="extended7">
+									<option value="<?= $sm['user']['extended']['field7']; ?>"><?= $sm['user']['extended']['field7']; ?></option>
+									<option value="<?= $sm['lang'][253]['text']; ?>"><?= $sm['lang'][253]['text']; ?></option>
+									<option value="<?= $sm['lang'][254]['text']; ?>"><?= $sm['lang'][254]['text']; ?></option>
+									<option value="<?= $sm['lang'][255]['text']; ?>"><?= $sm['lang'][255]['text']; ?></option>
+									<option value="<?= $sm['lang'][256]['text']; ?>"><?= $sm['lang'][256]['text']; ?></option>
+									<option value="<?= $sm['lang'][257]['text']; ?>"><?= $sm['lang'][257]['text']; ?></option>									
+								</select>
+							</div>     
+						  </div>						  
+						  
+						  <div class="row">
+							<div class="input-field col s5">
+							  <label><?= $sm['lang'][258]['text']; ?>: </label>
+							</div>
+							<div class="input-field col s6">
+								<select class="browser-default" name="extended8">
+									<option value="<?= $sm['user']['extended']['field8']; ?>"><?= $sm['user']['extended']['field8']; ?></option>
+									<option value="<?= $sm['lang'][259]['text']; ?>"><?= $sm['lang'][259]['text']; ?></option>
+									<option value="<?= $sm['lang'][260]['text']; ?>"><?= $sm['lang'][260]['text']; ?></option>
+									<option value="<?= $sm['lang'][261]['text']; ?>"><?= $sm['lang'][261]['text']; ?></option>
+								</select>
+							</div>     
+						  </div>	
+
+						  <div class="row">
+							<div class="input-field col s5">
+							  <label><?= $sm['lang'][262]['text']; ?>: </label>
+							</div>
+							<div class="input-field col s6">
+								<select class="browser-default" name="extended9">
+									<option value="<?= $sm['user']['extended']['field9']; ?>"><?= $sm['user']['extended']['field9']; ?></option>
+									<option value="<?= $sm['lang'][259]['text']; ?>"><?= $sm['lang'][259]['text']; ?></option>
+									<option value="<?= $sm['lang'][260]['text']; ?>"><?= $sm['lang'][260]['text']; ?></option>
+									<option value="<?= $sm['lang'][261]['text']; ?>"><?= $sm['lang'][261]['text']; ?></option>
+								</select>
+							</div>     
+						  </div>
+						  
+						  <div class="row">
+							<div class="input-field col s5">
+							  <label><?= $sm['lang'][263]['text']; ?>: </label>
+							</div>
+							<div class="input-field col s6">
+								<select class="browser-default" name="extended10">
+									<option value="<?= $sm['user']['extended']['field10']; ?>"><?= $sm['user']['extended']['field10']; ?></option>
+									<option value="<?= $sm['lang'][264]['text']; ?>"><?= $sm['lang'][264]['text']; ?></option>
+									<option value="<?= $sm['lang'][265]['text']; ?>"><?= $sm['lang'][265]['text']; ?></option>
+									<option value="<?= $sm['lang'][266]['text']; ?>"><?= $sm['lang'][266]['text']; ?></option>
+									<option value="<?= $sm['lang'][267]['text']; ?>"><?= $sm['lang'][267]['text']; ?></option>
+								</select>
+							</div>     
+						  </div>						  
+						  
+						  <div class="row">
+						  <br><br>
+						  <p id="update-error" class="red darken-4" style="color:#fff;font-size:16px;padding:5px;display:none;"></p>
+						  <p id="update-success" class="green darken-2" style="color:#fff;font-size:16px;padding:5px;display:none;"></p>					  
+							<div class="input-field col s4">
+							  <button type="submit" class="waves-effect waves-light btn blue darken-2" id="upd-btn" > <?= $sm['lang'][135]['text']; ?></button>
+							</div>
+						  </div>					  
+						</form>
+						<div class="divider"></div>
+					</div>
+					
+
+					
+					<div data-settings-page="2" style='display:none'>
+						<div class="row">
+							<form class="col s12" >
+								<h5><?= $sm['lang'][73]['text']; ?></h5>
+								<div class="divider"></div>          
+								  <div class="row">
+								   <p style="color:#999;"><?= $sm['lang'][140]['text']; ?></p>								  
+								   <p style="color:#666;">
+								   <?= $sm['lang'][141]['text']; ?>: 
+									<? if($sm['user']['premium'] == 0){?>
+									<b style='font-size:16px;'><?= $sm['lang'][219]['text']; ?></b> 
+									<? } else { ?>
+									<b style='font-size:16px;'>Premium</b> - premium <?= $sm['lang'][218]['text']; ?> <b><?= adminCheckDaysLeft($sm['user']['premium_check']); ?></b>
+									<? } ?>
+									<br>
+								   <?= $sm['lang'][142]['text']; ?>: <b style='font-size:16px;'><?= $sm['user']['credits']; ?></b>
+								  <br><br>
+								  <a class="waves-effect waves-light btn blue darken-2" id="add-credits"><?= $sm['lang'][143]['text']; ?></a>
+									<? if($sm['user']['premium'] == 0){?>					  
+									<a class="waves-effect waves-light btn amber darken-4" data-premium="1"><?= $sm['lang'][144]['text']; ?></a>
+									<? } ?>								
+								  </p>
+								  </div>
+							</form>
+						</div>	
+					</div>
+					
+					<div data-settings-page="3" style='display:none'>
+						<div class="row">
+							<form class="col s12" >
+								<h5><?= $sm['lang'][221]['text']; ?></h5>
+								<div class="divider"></div>          
+								  <div class="row">
+									<div class="input-field col s6">
+									  <label><?= $sm['lang'][268]['text']; ?></label>
+									</div>
+									<div class="input-field col s6">
+									  <input name="fans" type="radio" value="1"  <? if($sm['user_notifications']['fan'] == 1){echo 'checked';} ?> id="yes1" />
+									  <label for="yes1"><?= $sm['lang'][259]['text']; ?></label>
+									  <input name="fans" type="radio" value="0"  <? if($sm['user_notifications']['fan'] == 0){echo 'checked';} ?> id="no1" />
+									  <label for="no1"><?= $sm['lang'][260]['text']; ?></label>
+									</div>
+								  </div>
+								  <div class="row">
+									<div class="input-field col s6">
+									  <label><?= $sm['lang'][269]['text']; ?> <3</label>
+									</div>
+									<div class="input-field col s6">
+									  <input name="match_m" type="radio" value="1"  <? if($sm['user_notifications']['match_m'] == 1){echo 'checked';} ?> id="yes4" />
+									  <label for="yes4"><?= $sm['lang'][259]['text']; ?></label>
+									  <input name="match_m" type="radio" value="0"  <? if($sm['user_notifications']['match_m'] == 0){echo 'checked';} ?> id="no4" />
+									  <label for="no4"><?= $sm['lang'][260]['text']; ?></label>
+									</div>
+								  </div>								  
+								  <div class="row">
+									<div class="input-field col s6">
+									  <label><?= $sm['lang'][270]['text']; ?></label>
+									</div>
+									<div class="input-field col s6">
+									  <input name="near" type="radio" value="1"  <? if($sm['user_notifications']['near_me'] == 1){echo 'checked';} ?> id="yes2" />
+									  <label for="yes2"><?= $sm['lang'][259]['text']; ?></label>
+									  <input name="near" type="radio" value="0"  <? if($sm['user_notifications']['near_me'] == 0){echo 'checked';} ?> id="no2" />
+									  <label for="no2"><?= $sm['lang'][260]['text']; ?></label>
+									</div>
+								  </div>
+								  <div class="row">
+									<div class="input-field col s6">
+									  <label><?= $sm['lang'][271]['text']; ?></label>
+									</div>
+									<div class="input-field col s6">
+									  <input name="message" type="radio" value="1"  <? if($sm['user_notifications']['message'] == 1){echo 'checked';} ?> id="yes3" />
+									  <label for="yes3"><?= $sm['lang'][259]['text']; ?></label>
+									  <input name="message" type="radio" value="0"  <? if($sm['user_notifications']['message'] == 0){echo 'checked';} ?> id="no3" />
+									  <label for="no3"><?= $sm['lang'][260]['text']; ?></label>
+									</div>
+								  </div>								  
+							</form>
+						</div>	
+					</div>					
+					
+					<div data-settings-page="4" style='display:none'>
+						<div class="row">
+							<form class="col s12" id="change-password">
+								<h5><?= $sm['lang'][145]['text']; ?></h5>
+								<div class="divider"></div>          
+								  <div class="row">
+								   <p style="color:#999;"><?= $sm['lang'][146]['text']; ?></p>								  
+									<div class="input-field col s3">
+									  <label><?= $sm['lang'][147]['text']; ?>:</label>
+									</div>
+									<div class="input-field col s6">
+									  <input type="password" name="new_password"   >
+									  <input type="hidden" name="action" value="changep"   >
+									</div>
+								  </div>
+								  <div class="row">						  
+									<div class="input-field col s4">
+									  <button type="submit" id="change-pwd-btn" class="waves-effect waves-light btn blue darken-2" > <?= $sm['lang'][145]['text']; ?></button>
+									</div>
+								  </div>							  
+							</form>
+						</div>
+					</div>
+
+					<div data-settings-page="5" style='display:none'>	
+						<div class="row">
+							<form class="col s12" id="delete-profile">
+								<h5><?= $sm['lang'][148]['text']; ?></h5>
+								<div class="divider"></div>          
+								  <div class="row">
+								  <p style="color:#999;"><?= $sm['lang'][149]['text']; ?>
+								  <br><br>
+								  <a class="waves-effect waves-light btn red" id="delete-acc"><?= $sm['lang'][150]['text']; ?></a></p>
+								  </div>
+							</form>
+						</div>
+					</div>						
+                </div>
+            </div>

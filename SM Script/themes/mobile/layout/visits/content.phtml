@@ -1,0 +1,17 @@
+		<script>
+		url = "visits";
+		document.getElementById("navbar-title").innerHTML='<?= $sm['lang'][286]['text']; ?>';	
+		</script>
+		<? if($sm['user']['premium'] == 0 && $sm['basic']['visits'] == 0){ ?>			
+		<center>
+		<div style="width:100%;position:relative;height:80px;"></div>
+		<i class="mdi-action-lock-outline" style="padding-top:65px;color:#666;font-size:166px;"></i>	
+		<h5 style="color:#333;font-size:16px;">			
+		<?= $sm['user']['first_name']; ?> <b><?= totalVisits($sm['user']['id']);?></b>
+		<?= $sm['lang'][293]['text']; ?> <a href="javascript:;" data-premium="1" style="color:#c80678"> <?= $sm['lang'][294]['text']; ?></a> 
+		<br>		
+		</h5>									
+		</center>				
+		<? } else { 	
+			echo getUserVisitors($sm['user']['id']);
+		} ?>  
